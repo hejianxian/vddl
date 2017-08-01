@@ -1,0 +1,41 @@
+{
+  "name": "vddl",
+  "version": "0.0.0",
+  "description": "Vue components for modifying lists with the HTML5 drag & drop API.",
+  "jsnext": "dist/bundle.js",
+  "main": "dist/bundle.common.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "purge": "rm -rf dist/",
+    "compile": "rollup -c",
+    "build": "npm run purge && npm run compile",
+    "watch": "rollup -c -w",
+    "lint": "eslint src/* test/*",
+    "beforePublish": "npm run lint && npm run build"
+  },
+  "files": [
+    "dist/",
+    "src/"
+  ],
+  "author": "Hejx <531601727@qq.com>",
+  "license": "MIT",
+  "dependencies": {
+    "lodash": "^4.16.4",
+    "vue": "latest"
+  },
+  "devDependencies": {
+    "eslint": "^3.7.1",
+    "eslint-config-airbnb-base": "^8.0.0",
+    "eslint-plugin-html": "^1.5.3",
+    "eslint-plugin-import": "^1.16.0",
+    "less": "^2.7.1",
+    "rollup": "^0.36.3",
+    "rollup-plugin-buble": "^0.14.0",
+    "rollup-plugin-commonjs": "^5.0.5",
+    "rollup-plugin-node-resolve": "^2.0.0",
+    "rollup-plugin-vue": "^2.2.6",
+    "rollup-watch": "^2.5.0"
+  }
+}
