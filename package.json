@@ -1,9 +1,9 @@
 {
   "name": "vddl",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Vue components for modifying lists with the HTML5 drag & drop API.",
-  "jsnext": "dist/bundle.js",
-  "main": "dist/bundle.common.js",
+  "jsnext": "dist/vddl.js",
+  "main": "dist/vddl.common.js",
   "directories": {
     "test": "test"
   },
@@ -13,7 +13,9 @@
     "build": "npm run purge && npm run compile",
     "watch": "rollup -c -w",
     "lint": "eslint src/* test/*",
-    "beforePublish": "npm run lint && npm run build"
+    "beforePublish": "npm run lint && npm run build",
+    "docs": "docsify serve ./docs",
+    "test": "ava"
   },
   "files": [
     "dist/",
@@ -26,6 +28,7 @@
     "vue": "^2.4.2"
   },
   "devDependencies": {
+    "ava": "^0.21.0",
     "eslint": "^3.7.1",
     "eslint-config-airbnb-base": "^8.0.0",
     "eslint-plugin-html": "^1.5.3",

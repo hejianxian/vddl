@@ -2,3 +2,6 @@ node_modules/
 dist/
 coverage/
 config/
+test/
+example/
+rollup.config.js
