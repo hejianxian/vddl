@@ -1,8 +1,6 @@
 
-<p align="center">
-  <a href="https://hejx.herokuapp.com/vue-list/">
-    <img src="https://raw.githubusercontent.com/hejianxian/vddl/dev/media/Vddl-logo-300.png" width="200" center alt="vddl"/>
-  </a>
+<p align="">
+  <img src="https://raw.githubusercontent.com/hejianxian/vddl/dev/media/Vddl-logo-300.png" width="150" center alt="vddl"/>
 </p>
 
 <hr>
