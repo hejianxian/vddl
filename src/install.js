@@ -1,7 +1,15 @@
 import each from 'lodash/each';
 import components from './main';
 
-each(components, (component, name) => {
-  /* eslint no-undef: 0 */
-  Vue.component(name, component);
-});
+export default {
+  install(Vue) {
+    /* eslint no-param-reassign: 0 */
+    Vue.prototype.dndDropEffectWorkaround = {};
+    Vue.prototype.dndDragTypeWorkaround = {};
+
+    each(components, (component) => {
+      /* eslint no-undef: 0 */
+      Vue.component(component.name, component);
+    });
+  },
+};

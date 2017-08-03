@@ -8,13 +8,22 @@
   <link rel="stylesheet" href="//unpkg.com/docsify/lib/themes/vue.css">
 </head>
 <body>
+  <nav>
+    <a href="#/">EN</a>
+    <a href="#/zh-cn/">中文</a>
+  </nav>
   <div id="app"></div>
 </body>
 <script>
   window.$docsify = {
     name: 'vddl',
-    repo: ''
+    repo: 'https://github.com/hejianxian/vddl',
+    coverpage: true,
+    loadNavbar: true,
+    loadSidebar: true,
+    search: 'auto',
   }
 </script>
 <script src="//unpkg.com/docsify/lib/docsify.min.js"></script>
+<script src="//unpkg.com/docsify/lib/plugins/search.js"></script>
 </html>

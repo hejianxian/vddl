@@ -52,7 +52,7 @@ export default {
           if (err) throw err;
         }
     );
-    
+
     less.render(style, {
         compress: true          // Minify CSS output
       }, (err, output) => {
@@ -63,7 +63,7 @@ export default {
           if (err) throw err;
         });
       });
-    
+
     less.render(style, (err, output) => {
         if (err) throw err;
 
@@ -71,7 +71,7 @@ export default {
         fs.writeFile(result, output.css, (err) => {
           if (err) throw err;
         });
-      });  
+      });
   },
   standalone: true, // custom option.
 };

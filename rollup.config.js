@@ -11,10 +11,11 @@ import bubleConfig from './config/buble.config';
 let cache;
 
 const config = {
-  entry: 'src/main.js',
+  entry: 'src/install.js',
   targets: [
     { format: 'es', dest: `dist/${pack.name}.js` },
     { format: 'cjs', dest: `dist/${pack.name}.common.js` },
+    { format: 'umd', dest: `dist/${pack.name}.umd.js`, moduleName: 'DragAndDropList' },
   ],
   plugins: [
     vue(vueConfig),
@@ -23,27 +24,5 @@ const config = {
   useStrict: false,
   cache,
 };
-
-// --- DO NOT CHANGE BEYOND THIS ---
-if (vueConfig.standalone) {
-  const options = clone(config);
-
-  options.entry = 'src/install.js';
-  options.targets = [];
-  options.plugins = [
-    resolve({
-      jsnext: true,
-      main: true,
-      browser: true,
-    }),
-    commonjs(),
-  ].concat(options.plugins);
-
-  rollup(options).then((bundle) => bundle.write({
-    format: 'iife',
-    dest: `dist/${pack.name}.min.js`,
-    moduleName: pack.name,
-  }));
-}
 
 export default config;

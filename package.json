@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "Vue components for modifying lists with the HTML5 drag & drop API.",
   "jsnext": "dist/vddl.js",
-  "main": "dist/vddl.common.js",
+  "main": "dist/vddl.umd.js",
   "directories": {
     "test": "test"
   },
