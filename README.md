@@ -1,6 +1,6 @@
 
 <p style="text-align: center; padding: 50px 0;">
-  <img src="./media/vddl-logo-300.png" width="300" alt="vddl" />
+  <img src="https://raw.githubusercontent.com/hejianxian/vddl/dev/media/Vddl-logo-300.png" width="300" alt="vddl" />
 </p>
 
 <hr>
