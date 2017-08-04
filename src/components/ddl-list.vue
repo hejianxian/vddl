@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="vddl-list">
     <slot></slot>
   </div>
 </template>
@@ -9,13 +9,16 @@ export default {
   name: 'vddl-list',
   // css: placeholder, dragover
   props: {
-    dndList: Array,
-    dndAllowedTypes: Array,
-    dndDisableIf: Boolean,
-    dndHorizontalList: Boolean,
-    dndExternalSources: Boolean,
-    dndInserted: Function,
-    dndDrop: Function,
+    list: Array,
+
+    allowedTypes: Array,
+    disableIf: Boolean,
+    horizontal: Boolean,
+    externalSources: Boolean,
+
+    dragover: Function,
+    inserted: Function,
+    drop: Function,
   },
   data() {
     return {};
@@ -78,11 +81,11 @@ export default {
 
       // At this point we invoke the callback, which still can disallow the drop.
       // We can't do this earlier because we want to pass the index of the placeholder.
-      if (this.dndDragover && !this.invokeCallback('dndDragover', event, getPlaceholderIndex())) {
+      if (this.dndDragover && !this.invokeCallback('dragover', event, getPlaceholderIndex())) {
         return this.stopDragover(event);
       }
 
-      if (this.$el.className.indexOf("dndDragover") < 0) this.$el.className = this.$el.className.trim() + " dndDragover";
+      if (this.$el.className.indexOf("vddl-dragover") < 0) this.$el.className = this.$el.className.trim() + " vddl-dragover";
 
       event.preventDefault();
       event.stopPropagation();
@@ -109,8 +112,8 @@ export default {
 
       // Invoke the callback, which can transform the transferredObject and even abort the drop.
       var index = this.getPlaceholderIndex();
-      if (this.dndDrop) {
-        transferredObject = this.invokeCallback('dndDrop', event, index, transferredObject);
+      if (this.drop) {
+        transferredObject = this.invokeCallback('drop', event, index, transferredObject);
         if (!transferredObject) {
           return this.stopDragover();
         }
@@ -118,9 +121,9 @@ export default {
 
       // Insert the object into the array, unless dnd-drop took care of that (returned true).
       if (transferredObject !== true) {
-        this.dndList.splice(index, 0, transferredObject);
+        this.list.splice(index, 0, transferredObject);
       }
-      this.invokeCallback('dndInserted', event, index, transferredObject);
+      this.invokeCallback('inserted', event, index, transferredObject);
 
       // In Chrome on Windows the dropEffect will always be none...
       // We have to determine the actual effect manually from the allowed effects
@@ -142,9 +145,9 @@ export default {
     },
     handleDragleave(event) {
       event = event.originalEvent || event;
-      this.$el.className = this.$el.className.replace("dndDragover", "").trim();
+      this.$el.className = this.$el.className.replace("vddl-dragover", "").trim();
       setTimeout(() => {
-        if (this.$el.className.indexOf("dndDragover") < 0) {
+        if (this.$el.className.indexOf("vddl-dragover") < 0) {
           this.placeholderNode.parentNode && this.placeholderNode.parentNode.removeChild(this.placeholderNode);
         }
       }, 100);
@@ -161,19 +164,19 @@ export default {
     },
 
     /**
-     * Tries to find a child element that has the dndPlaceholder class set. If none was found, a
-     * new li element is created.
+     * Tries to find a child element that has the 'vddl-placeholder' class set. If none was found, a
+     * new div element is created.
      */
     getPlaceholderElement() {
       var placeholder,
-          oldLi = this.$el.parentNode.querySelectorAll('.dndPlaceholder');
-      if (oldLi.length > 0) {
-        placeholder = oldLi[0];
+          oldPlaceholder = this.$el.parentNode.querySelectorAll('.vddl-placeholder');
+      if (oldPlaceholder.length > 0) {
+        placeholder = oldPlaceholder[0];
         return placeholder;
       }
-      var newLi = document.createElement('li');
-      newLi.setAttribute('class', 'dndPlaceholder');
-      return newLi;
+      var newPlaceholder = document.createElement('div');
+      newPlaceholder.setAttribute('class', 'vddl-placeholder');
+      return newPlaceholder;
     },
 
     getPlaceholderIndex() {
@@ -193,15 +196,15 @@ export default {
 
       // Now check the dnd-allowed-types against the type of the incoming element. For drops from
       // external sources we don't know the type, so it will need to be checked via dnd-drop.
-      if (this.dndAllowedTypes && this.dndDragTypeWorkaround.isDragging) {
-        var allowed = this.dndAllowedTypes;
+      if (this.allowedTypes && this.dndDragTypeWorkaround.isDragging) {
+        var allowed = this.allowedTypes;
         if (Array.isArray(allowed) && allowed.indexOf(this.dndDragTypeWorkaround.dragType) === -1) {
           return false;
         }
       }
 
       // Check whether droping is disabled completely
-      if (this.dndDisableIf) return false;
+      if (this.disableIf) return false;
 
       return true;
     },
@@ -211,7 +214,7 @@ export default {
      */
     stopDragover() {
       this.placeholderNode.parentNode && this.placeholderNode.parentNode.removeChild(this.placeholderNode);
-      this.$el.className = this.$el.className.replace("dndDragover", "").trim();
+      this.$el.className = this.$el.className.replace("vddl-dragover", "").trim();
       return true;
     },
 
@@ -246,8 +249,8 @@ export default {
     this.listNode = this.$el;
     this.placeholderNode.parentNode && this.placeholderNode.parentNode.removeChild(this.placeholderNode);
 
-    this.horizontal = this.dndHorizontalList;
-    this.externalSources = this.dndExternalSources;
+    this.horizontal = this.disableIf;
+    this.externalSources = this.disableIf;
 
     // bind events
     this.$el.addEventListener('dragenter', this.handleDragenter, false);

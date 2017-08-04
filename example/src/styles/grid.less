@@ -1,0 +1,52 @@
+/* === v-grid === */
+
+.v-row {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    > [class*="v-col--"] {
+        box-sizing: border-box;
+    }
+}
+@cols: 5, 10, 15, 20, 25, 30, 100/3, 35, 40, 45, 50, 55, 60, 65, 100*(2/3), 70, 75, 80, 85, 90, 95, 100;
+.v-row {
+    .v-col--auto {
+        width: 100%;
+    }
+    ._(@i: length(@cols)) when (@i > 0) {
+        @divider: e(extract(@cols, @i));
+        @className: `Math.floor(@{divider})`;
+        @n: `100/parseFloat(@{divider})`;
+        @n-1: @n - 1;
+        .v-col--@{className} {
+            width: ~"@{divider}%";
+            width: ~"-webkit-calc((100% - 15px*@{n-1}) / @{n})";
+            width: ~"calc((100% - 15px*@{n-1}) / @{n})";
+        }
+        &.v-row--no-gutter {
+            .v-col--@{className} {
+                width: ~"@{divider}%";
+            }
+        }
+        ._((@i - 1));
+    }._;
+
+    .colAutoMixin(@j: 1) when (@j < length(@cols)) {
+        @divider: e(extract(@cols, @j));
+        @className: `Math.floor(@{divider})`;
+        .v-col--auto:nth-last-child(@{j}), .v-col--auto:nth-last-child(@{j}) ~ .v-col--auto {
+            @j-1: @j - 1;
+            width: 100% / @j;
+            width: ~"-webkit-calc((100% - 15px*@{j-1}) / @{j})";
+            width: ~"calc((100% - 15px*@{j-1}) / @{j})";
+        }
+        &.v-row--no-gutter {
+            .v-col--auto:nth-last-child(@{j}), .v-col--auto:nth-last-child(@{j}) ~ .v-col--auto {
+                width: 100% / @j;
+            }
+        }
+        .colAutoMixin((@j + 1));
+    }
+    .colAutoMixin();
+}

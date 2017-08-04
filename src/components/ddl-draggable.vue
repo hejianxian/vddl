@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="vddl-draggable">
     <slot></slot>
   </div>
 </template>
@@ -7,25 +7,25 @@
 <script>
 export default {
   name: 'vddl-draggable',
-  // css: dragging, draggingSource
+  // css: vddl-dragging, vddl-dragging-source
   props: {
-    dndDraggable: [ Object, Array ],
-    dndWrapper: Array,
-    dndIndex: Number,
+    draggable: [ Object, Array ],
+    wrapper: Array,
+    index: Number,
 
-    dndEffectAllowed: String,
-    dndType: String,
+    effectAllowed: String,
+    type: String,
 
     // diable
-    dndDisableIf: Boolean,
+    disableIf: Boolean,
 
     // callback fn
-    dndDragstart: Function,
-    dndSelected: Function,
-    dndDragend: Function,
-    dndMoved: Function,
-    dndCopied: Function,
-    dndCanceled: Function,
+    dragstart: Function,
+    selected: Function,
+    dragend: Function,
+    moved: Function,
+    copied: Function,
+    canceled: Function,
   },
   data() {
     return {};
@@ -35,19 +35,19 @@ export default {
     handleDragstart(event) {
       event = event.originalEvent || event;
 
-      var dndDraggable = JSON.stringify(this.dndDraggable);
+      var draggable = JSON.stringify(this.draggable);
       // Check whether the element is draggable, since dragstart might be triggered on a child.
-      if (dndDraggable == 'false' || this.dndDisableIf) return true;
+      if (draggable == 'false' || this.disableIf) return true;
 
       // Serialize the data associated with this element. IE only supports the Text drag type
-      event.dataTransfer.setData("Text", dndDraggable);
+      event.dataTransfer.setData("Text", draggable);
 
       // Only allow actions specified in dnd-effect-allowed attribute
-      event.dataTransfer.effectAllowed = this.dndEffectAllowed || "move";
+      event.dataTransfer.effectAllowed = this.effectAllowed || "move";
 
       // Add CSS classes. IE9 not support 'classList'
-      this.$el.className = this.$el.className.trim() + " dndDragging";
-      setTimeout(function() { this.$el.className = this.$el.className.trim() + " dndDraggingSource"; }.bind(this), 0);
+      this.$el.className = this.$el.className.trim() + " vddl-dragging";
+      setTimeout(function() { this.$el.className = this.$el.className.trim() + " vddl-dragging-source"; }.bind(this), 0);
 
       // Workarounds for stupid browsers, see description below
       this.dndDropEffectWorkaround.dropEffect = "none";
@@ -55,7 +55,7 @@ export default {
 
       // Save type of item in global state. Usually, this would go into the dataTransfer
       // typename, but we have to use "Text" there to support IE
-      this.dndDragTypeWorkaround.dragType = this.dndType || undefined;
+      this.dndDragTypeWorkaround.dragType = this.type || undefined;
 
       // Try setting a proper drag image if triggered on a dnd-handle (won't work in IE).
       if (event._dndHandle && event.dataTransfer.setDragImage) {
@@ -63,8 +63,8 @@ export default {
       }
 
       // Invoke callback
-      if (typeof(this.dndDragstart) === 'function') {
-        this.dndDragstart.call(this, event.target);
+      if (typeof(this.dragstart) === 'function') {
+        this.dragstart.call(this, event.target);
       }
 
       event.stopPropagation();
@@ -76,44 +76,44 @@ export default {
       var dropEffect = this.dndDropEffectWorkaround.dropEffect;
       switch (dropEffect) {
         case "move":
-          if (typeof(this.dndMoved) === 'function') {
-            this.dndMoved(this.dndWrapper, this.dndIndex, event.target);
+          if (typeof(this.moved) === 'function') {
+            this.moved(this.wrapper, this.index, event.target);
           } else {
-            this.dndWrapper.splice(this.dndIndex, 1);
+            this.wrapper.splice(this.index, 1);
           }
           break;
         case "copy":
-          if (typeof(this.dndCopied) === 'function') {
-            this.dndCopied.call(this, this.dndDraggable, event.target);
+          if (typeof(this.copied) === 'function') {
+            this.copied.call(this, this.draggable, event.target);
           }
           break;
         case "none":
-          if (typeof(this.dndCanceled) === 'function') {
-            this.dndCanceled.call(this, event.target);
+          if (typeof(this.canceled) === 'function') {
+            this.canceled.call(this, event.target);
           }
           break;
       }
-      if (typeof(this.dndDragend) === 'function') {
-        this.dndDragend.call(this, dropEffect, event.target);
+      if (typeof(this.dragend) === 'function') {
+        this.dragend.call(this, dropEffect, event.target);
       }
 
       // Clean up
-      this.$el.className = this.$el.className.replace("dndDragging", "").trim();
+      this.$el.className = this.$el.className.replace("vddl-dragging", "").trim();
       var _el = this.$el;
       setTimeout(function(){
         // here this.$el will be null
-        _el.className = _el.className.replace("dndDraggingSource", "").trim();
+        _el.className = _el.className.replace("vddl-dragging-source", "").trim();
       }, 0);
       this.dndDragTypeWorkaround.isDragging = false;
       event.stopPropagation();
     },
 
     handleClick(event) {
-      if (!this.dndSelected) return;
+      if (!this.selected) return;
 
       event = event.originalEvent || event;
-      if (typeof(this.dndSelected) === 'function') {
-        this.dndSelected.call(this, this.dndWrapper[this.dndIndex], event.target);
+      if (typeof(this.selected) === 'function') {
+        this.selected.call(this, this.wrapper[this.index], event.target);
       }
       event.stopPropagation();
     },
@@ -129,7 +129,7 @@ export default {
   },
   mounted() {
     let status = true;
-    if (this.dndDisableIf) status = false;
+    if (this.disableIf) status = false;
     this.$el.setAttribute('draggable', status);
 
     this.$el.addEventListener('dragstart', this.handleDragstart, false);

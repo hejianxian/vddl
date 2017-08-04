@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="vddl-nodrag">
     <slot></slot>
   </div>
 </template>

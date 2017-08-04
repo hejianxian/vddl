@@ -77,11 +77,5 @@ export default {
 </script>
 
 <style lang="" scoped>
-.dndDragging{
-    opacity: 0.7;
-}
 
-.dndDraggingSource {
-    display: none;
-}
 </style>

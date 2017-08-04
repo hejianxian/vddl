@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="vddl-handle">
     <slot></slot>
   </div>
 </template>
@@ -8,8 +8,8 @@
 export default {
   name: 'vddl-handle',
   props: {
-    dndHandleLeft: Number,
-    dndHandletop: Number,
+    handleLeft: Number,
+    handleTop: Number,
   },
   data() {
     return {};
@@ -19,8 +19,8 @@ export default {
     handle(event) {
       event = event.originalEvent || event;
       event._dndHandle = true;
-      event._dndHandleLeft = this.dndHandleLeft || 0;
-      event._dndHandleTop = this.dndHandleTop || 0;
+      event._dndHandleLeft = this.handleLeft || 0;
+      event._dndHandleTop = this.handleTop || 0;
     },
   },
   mounted() {
