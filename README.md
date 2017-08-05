@@ -5,6 +5,8 @@
 
 <hr>
 
+[![npm](https://img.shields.io/npm/v/vddl.svg?maxAge=2592000?style=flat-square)]()
+
 Vue components for modifying lists with the HTML5 drag & drop API.
 
 ### Installation
