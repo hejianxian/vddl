@@ -1,6 +1,6 @@
 <template>
   <div class="demo-content">
-    <h3>ItemTypes</h3>
+    <v-title>ItemTypes</v-title>
     <div class="v-row">
       <div class="v-col--auto" v-for="list in lists">
         <div class="panel">
@@ -13,19 +13,18 @@
               :disable-if="list.people.length >= list.max">
 
               <vddl-draggable class="panel__body--item" v-for="(person, index) in list.people" :key="person.name"
-                  :draggable="person"
-                  :type="person.type"
-                  :wrapper="list.people"
-                  :index="index"
-                  :disable-if="person.type == 'unknown'"
-                  effect-allowed="move"
-                  v-bind:class="{'unknown': person.type == 'unknown'}"
-                  >
-                  {{person.name}}
+                :draggable="person"
+                :type="person.type"
+                :wrapper="list.people"
+                :index="index"
+                :disable-if="person.type == 'unknown'"
+                effect-allowed="move"
+                v-bind:class="{'unknown': person.type == 'unknown'}">
+                {{person.name}}
               </vddl-draggable >
 
               <vddl-placeholder class="panel__placeholder">
-                  Drop any <strong>{{list.allowedTypes.join(' or ')}}</strong> here
+                Drop any <strong>{{list.allowedTypes.join(' or ')}}</strong> here
               </vddl-placeholder>
             </vddl-list>
           </div>
@@ -120,14 +119,6 @@ export default {
 </script>
 
 <style scoped>
-.vddl-dragging{
-  opacity: 0.7;
-}
-
-.vddl-dragging-source {
-  display: none;
-}
-
 .unknown {
   color: #ccc;
 }

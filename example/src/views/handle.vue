@@ -1,19 +1,19 @@
 <template>
   <div class="demo-content">
-    <h3>Handle</h3>
+    <v-title>Handle</v-title>
     <div class="v-row handleDemo">
       <div v-for="(list, listName) in lists" class="v-col--auto">
         <div class="panel">
             <div class="panel__heading">
-                <h3>List {{listName}}</h3>
+              <h3>List {{listName}}</h3>
             </div>
             <div class="panel__body">
-              <vddl-list class="panel__body--list" :list="list" :dnd-horizontal-list="false">
+              <vddl-list class="panel__body--list" :list="list" :horizontal="false">
                   <vddl-draggable class="panel__body--item no-padding-left" v-for="(item, index) in list" :key="item.label"
-                      :draggable="item"
-                      :index="index"
-                      :wrapper="list"
-                      effect-allowed="move">
+                    :draggable="item"
+                    :index="index"
+                    :wrapper="list"
+                    effect-allowed="move">
                       <vddl-nodrag class="nodrag">
                         <vddl-handle
                           :handle-left="20"

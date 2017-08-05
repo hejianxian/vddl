@@ -1,0 +1,31 @@
+
+/**
+ * For the correct positioning of the placeholder element, the vddl-list and
+ * it's children must have position: relative
+ */
+.vddl-list, .vddl-draggable {
+  position: relative;
+}
+
+/**
+ * The vddl-list should always have a min-height,
+ * otherwise you can't drop to it once it's empty
+ */
+.handleDemo .vddl-list {
+  padding-left: 0px;
+  min-height: @item-height;
+}
+
+.vddl-dragging{
+  opacity: 0.7;
+}
+
+/**
+ * The vddl-dragging-source class will be applied to
+ * the source element of a drag operation. It makes
+ * sense to hide it to give the user the feeling
+ * that he's actually moving it.
+ */
+.vddl-dragging-source {
+  display: none;
+}

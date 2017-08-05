@@ -1,45 +1,47 @@
 <template lang="html">
-  <div class="row horizontal">
-    <div v-for="(container, zone) in lists" class="col-md-4">
-      <div class="panel panel-vue">
-        <div class="panel-heading">
-            <h3 class="panel-title">Dropzone {{zone+1}}</h3>
-        </div>
-        <vddl-list class="panel-body container-list"
-            :dnd-list="container"
-            :dnd-allowed-types="['containerType']"
-            :dnd-external-sources="true">
-          <vddl-draggable class="panel panel-vue padding"
+  <div class="demo-content horizontal">
+    <v-title>Horizontal</v-title>
+    <div class="v-row">
+      <div v-for="(container, zone) in lists" class="v-col--auto">
+        <div class="panel">
+          <div class="panel__heading">
+            <h3>Dropzone {{zone+1}}</h3>
+          </div>
+          <vddl-list class="panel__body horizontal__container"
+            :list="container"
+            :allowed-types="['containerType']"
+            :external-sources="true">
+            <vddl-draggable class="panel"
               v-for="(list, index) in container"
               :key="index"
-              :dnd-draggable="list"
-              :dnd-index="index"
-              :dnd-wrapper="container"
-              :dnd-type="'containerType'"
-              dnd-effect-allowed="copyMove">
-              <div class="panel-heading">
-                  <h3 class="panel-title">container {{index+1}}</h3>
+              :draggable="list"
+              :index="index"
+              :wrapper="container"
+              :type="'containerType'"
+              effect-allowed="copyMove">
+              <div class="panel__heading">
+                <h3>Container {{index+1}}</h3>
               </div>
-              <div class="panel-body">
-                <vddl-list class="item-list"
-                    :dnd-list="list"
-                    :dnd-horizontal-list="true"
-                    :dnd-allowed-types="['itemType']"
-                    :dnd-external-sources="true">
-                  <vddl-draggable  v-for="(item, number) in list" :key="item.id" class="item"
-                      :dnd-draggable="item"
-                      :dnd-type="'itemType'"
-                      dnd-effect-allowed="copyMove"
-                      :dnd-index="number"
-                      :dnd-wrapper="list">
-                      {{item.label}}
+              <div class="panel__body">
+                <vddl-list class="panel__body--list padding"
+                  :list="list"
+                  :horizontal="true"
+                  :allowed-types="['itemType']"
+                  :external-sources="true">
+                  <vddl-draggable v-for="(item, number) in list" :key="item.id" class="panel__body--item horizontal-item"
+                    :draggable="item"
+                    :type="'itemType'"
+                    effect-allowed="copyMove"
+                    :index="number"
+                    :wrapper="list">
+                    {{item.label}}
                   </vddl-draggable >
                 </vddl-list>
               </div>
             </vddl-draggable>
           </vddl-list>
+        </div>
       </div>
-    </div>
     </div>
   </div>
 </template>
@@ -73,6 +75,57 @@ export default {
 };
 </script>
 
-<style>
+<style lang="less">
+@import '../styles/_var.less';
+
+@padding: 7px;
+
+.panel__body--list.padding {
+  padding: @padding;
+  &:after{
+    content: '';
+    clear: both;
+    display: block;
+    width: 100%;
+    height: 0;
+    visibility: hidden;
+  }
+}
+
+.item {
+  color: #fff;
+  width: @item-height;
+  height: @item-height;
+  margin: @padding;
+  background: @base-color;
+  text-align: center;
+  line-height: 16px;
+  padding: 2px;
+  float: left;
+  border-radius: 4px;
+  font-size: 13px;
+  box-sizing: border-box;
+}
+
+.horizontal-item {
+  .item;
+}
+
+.horizontal .vddl-placeholder {
+  .item;
+  background: @placeholder-bg;
+}
+
+@container-height: 166px;
+.horizontal .horizontal__container {
+  min-height: @container-height;
+  > .vddl-placeholder {
+    width: 100%;
+    height: @container-height;
+    margin: 10px 0;
+    border-radius: 0;
+    padding: 0;
+  }
+}
 
 </style>

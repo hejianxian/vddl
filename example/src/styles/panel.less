@@ -1,8 +1,12 @@
 .panel {
-  width: 100%;
   border-radius: 8px;
   border: 1px solid #eee;
   overflow: hidden;
+  margin-bottom: 15px;
+  p {
+    display: inline-block;
+    margin: 0;
+  }
   &__heading {
     height: @item-height;
     line-height: @item-height;
@@ -15,16 +19,22 @@
     }
   }
   &__body {
+    background: #fff;
+    min-height: @item-height;
+    > .panel {
+      margin: 10px;
+    }
     &--list {
-
+      background: #fff;
     }
     &--item, .panel__placeholder {
       width: 100%;
-      height: @item-height;
+      min-height: @item-height;
       line-height: @item-height;
       border-bottom: 1px solid #eee;
       padding: 0 15px;
       background: #ffffff;
+      box-sizing: border-box;
     }
     &--item.no-padding-left {
       padding-left: 0;
@@ -32,8 +42,19 @@
     &--item:last-child {
       border-bottom: none;
     }
+    &--item {
+      > .panel {
+        margin: 15px 0;
+      }
+    }
   }
   .panel__placeholder {
     background: @placeholder-bg;
+  }
+}
+
+.panel.panel--info {
+  .panel__body {
+    padding: 25px;
   }
 }

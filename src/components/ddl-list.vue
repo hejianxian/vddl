@@ -249,9 +249,6 @@ export default {
     this.listNode = this.$el;
     this.placeholderNode.parentNode && this.placeholderNode.parentNode.removeChild(this.placeholderNode);
 
-    this.horizontal = this.disableIf;
-    this.externalSources = this.disableIf;
-
     // bind events
     this.$el.addEventListener('dragenter', this.handleDragenter, false);
     this.$el.addEventListener('dragover', this.handleDragover, false);

@@ -84,25 +84,23 @@ export default {
           break;
         case "copy":
           if (typeof(this.copied) === 'function') {
-            this.copied.call(this, this.draggable, event.target);
+            this.copied(this.draggable, event.target);
           }
           break;
         case "none":
           if (typeof(this.canceled) === 'function') {
-            this.canceled.call(this, event.target);
+            this.canceled(event.target);
           }
           break;
       }
       if (typeof(this.dragend) === 'function') {
-        this.dragend.call(this, dropEffect, event.target);
+        this.dragend(dropEffect, event.target);
       }
 
       // Clean up
       this.$el.className = this.$el.className.replace("vddl-dragging", "").trim();
-      var _el = this.$el;
-      setTimeout(function(){
-        // here this.$el will be null
-        _el.className = _el.className.replace("vddl-dragging-source", "").trim();
+      setTimeout(() => {
+        this.$el.className = this.$el.className.replace("vddl-dragging-source", "").trim();
       }, 0);
       this.dndDragTypeWorkaround.isDragging = false;
       event.stopPropagation();
@@ -113,7 +111,7 @@ export default {
 
       event = event.originalEvent || event;
       if (typeof(this.selected) === 'function') {
-        this.selected.call(this, this.wrapper[this.index], event.target);
+        this.selected(this.wrapper[this.index], event.target);
       }
       event.stopPropagation();
     },
@@ -125,6 +123,11 @@ export default {
     handleSelected() {
       if (this.dragDrop) this.dragDrop();
       return false;
+    },
+  },
+  watch: {
+    disableIf(val) {
+      this.$el.setAttribute('draggable', !val);
     },
   },
   mounted() {
