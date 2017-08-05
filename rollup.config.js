@@ -10,6 +10,15 @@ import bubleConfig from './config/buble.config';
 
 let cache;
 
+let pkg = require('./package.json');
+let banner =
+  '/*!\n' +
+  ' * Vddl.js v' + pkg.version + '\n' +
+  ' * (c) ' + new Date().getFullYear() + ' Hejx\n' +
+  ' * Released under the MIT License.\n' +
+	' * ' + pkg.homepage + '\n' +
+  ' */\n';
+
 const config = {
   entry: 'src/install.js',
   targets: [
@@ -23,6 +32,7 @@ const config = {
   ],
   useStrict: false,
   cache,
+  banner,
 };
 
 export default config;

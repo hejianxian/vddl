@@ -40,5 +40,6 @@
     "rollup-plugin-node-resolve": "^2.0.0",
     "rollup-plugin-vue": "^2.2.6",
     "rollup-watch": "^2.5.0"
-  }
+  },
+  "homepage": "https://github.com/hejianxian/vddl#readme"
 }
