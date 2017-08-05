@@ -1,4 +1,4 @@
-<img src="_assets/vddl.png" width="168" title="vddl"/>
+<img src="_media/vddl.png" width="168" title="vddl"/>
 
 > Vue components for modifying lists with the
 
