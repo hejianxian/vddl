@@ -79,7 +79,7 @@ export default {
       switch (dropEffect) {
         case "move":
           if (typeof(this.moved) === 'function') {
-            this.moved(this.wrapper, this.index, event.target);
+            this.moved(this.index, event.target);
           } else {
             this.wrapper.splice(this.index, 1);
           }

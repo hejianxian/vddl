@@ -4,6 +4,7 @@ import VueRouter from 'vue-router'
 import App from './App.vue'
 import Vddl from '../../'
 import routes from './routes.js'
+import store from './store'
 
 import vTitle from './components/title.vue'
 
@@ -18,6 +19,7 @@ const router = new VueRouter({
 
 new Vue({
   el: '#app',
+  store,
   router,
   render: h => h(App)
 })

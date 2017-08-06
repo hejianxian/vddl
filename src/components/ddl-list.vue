@@ -222,13 +222,17 @@ export default {
      * Invokes a callback with some interesting parameters and returns the callbacks return value.
      */
     invokeCallback(expression, event, index, item) {
-      return this[expression] && this[expression]({
+      var fn = this[expression];
+      if (fn) {
+        fn({
           event: event,
           index: index,
           item: item || undefined,
           external: !this.dndDragTypeWorkaround.isDragging,
           type: this.dndDragTypeWorkaround.isDragging ? this.dndDragTypeWorkaround.dragType : undefined
         });
+      }
+      return fn ? true : false;
     },
 
     /**

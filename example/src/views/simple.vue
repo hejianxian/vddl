@@ -95,17 +95,17 @@ export default {
     selectedEvent: function(item){
       this.selected = item;
     },
-    handleDragstart: function() {
+    handleDragstart() {
       console.log('handleDragstart');
     },
-    handleDragend: function() {
+    handleDragend() {
       console.log('handleDragend');
     },
-    handleCanceled: function() {
+    handleCanceled() {
       console.log('handleCanceled');
-    }
-  }
-}
+    },
+  },
+};
 </script>
 
 <style lang="less">

@@ -1,5 +1,4 @@
 {
-  "presets": [
-    ["env", { "modules": false }]
-  ]
+  "presets": ["es2015", "stage-2", ["env", { "modules": false }]],
+  "plugins": ["transform-runtime"]
 }
