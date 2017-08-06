@@ -49,6 +49,9 @@ export default {
           },
           {
             "label": "Item A4"
+          },
+          {
+            "label": "Item A5"
           }
         ],
         "B": [
@@ -63,6 +66,9 @@ export default {
           },
           {
             "label": "Item B4"
+          },
+          {
+            "label": "Item B5"
           }
         ],
         "C": [
@@ -77,6 +83,9 @@ export default {
           },
           {
             "label": "Item C4"
+          },
+          {
+            "label": "Item C5"
           }
         ]
       }

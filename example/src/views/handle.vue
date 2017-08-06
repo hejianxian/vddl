@@ -49,6 +49,9 @@ export default {
           },
           {
             "label": "Item A4"
+          },
+          {
+            "label": "Item A5"
           }
         ],
         "B": [
@@ -63,6 +66,9 @@ export default {
           },
           {
             "label": "Item B4"
+          },
+          {
+            "label": "Item B5"
           }
         ],
         "C": [
@@ -77,6 +83,9 @@ export default {
           },
           {
             "label": "Item C4"
+          },
+          {
+            "label": "Item C5"
           }
         ]
       }
@@ -86,57 +95,18 @@ export default {
 </script>
 
 <style lang="less">
-
 @import '../styles/_var.less';
 
-/**
- * For the correct positioning of the placeholder element, the vddl-list and
- * it's children must have position: relative
- */
-.handleDemo .vddl-list,
-.handleDemo .vddl-list > div {
-  position: relative;
-  min-height: @item-height;
-}
-
-/**
- * The vddl-list should always have a min-height,
- * otherwise you can't drop to it once it's empty
- */
-.handleDemo .vddl-list {
-  padding-left: 0px;
-  min-height: @item-height;
-}
-
-/**
- * The vddl-dragging-source class will be applied to
- * the source element of a drag operation. It makes
- * sense to hide it to give the user the feeling
- * that he's actually moving it.
- */
-.handleDemo .vddl-list .vddl-dragging-source {
-  display: none;
-}
-
-/**
- * An element with .vddl-placeholder class will be
- * added to the vddl-list while the user is dragging
- * over it.
- */
 .handleDemo .vddl-placeholder {
-  display: block;
   width: 100%;
   height: @item-height;
   background: @placeholder-bg;
+  border-bottom: 1px solid @placeholder-bg;
+}
+.handleDemo .vddl-dragging.vddl-dragging-source {
+  display: none;
 }
 
-/**
- * The vddl-lists's child elements currently MUST have
- * position: relative. Otherwise we can not determine
- * whether the mouse pointer is in the upper or lower
- * half of the element we are dragging over. In other
- * browsers we can use event.offsetY for this.
- */
 .handleDemo .vddl-list div {
   display: flex;
 

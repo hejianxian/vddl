@@ -47,7 +47,9 @@ export default {
 
       // Add CSS classes. IE9 not support 'classList'
       this.$el.className = this.$el.className.trim() + " vddl-dragging";
-      setTimeout(function() { this.$el.className = this.$el.className.trim() + " vddl-dragging-source"; }.bind(this), 0);
+      setTimeout(() => {
+        this.$el.className = this.$el.className.trim() + " vddl-dragging-source";
+      }, 0);
 
       // Workarounds for stupid browsers, see description below
       this.dndDropEffectWorkaround.dropEffect = "none";

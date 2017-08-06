@@ -1,6 +1,6 @@
 <template>
   <div class="demo-content">
-    <v-title>ItemTypes</v-title>
+    <v-title>Item types</v-title>
     <div class="v-row">
       <div class="v-col--auto" v-for="list in lists">
         <div class="panel">

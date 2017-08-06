@@ -2,38 +2,38 @@
   <div class="demo-content horizontal">
     <v-title>Horizontal</v-title>
     <div class="v-row">
-      <div v-for="(container, zone) in lists" class="v-col--auto">
+      <div v-for="(co, zone) in lists" class="v-col--auto">
         <div class="panel">
           <div class="panel__heading">
-            <h3>Dropzone {{zone+1}}</h3>
+            <h3>Dropzone {{co.id}}</h3>
           </div>
           <vddl-list class="panel__body horizontal__container"
-            :list="container"
+            :list="co.container"
             :allowed-types="['containerType']"
             :external-sources="true">
             <vddl-draggable class="panel"
-              v-for="(list, index) in container"
-              :key="index"
-              :draggable="list"
+              v-for="(container, index) in co.container"
+              :key="container.id"
+              :draggable="container"
               :index="index"
-              :wrapper="container"
+              :wrapper="co.container"
               :type="'containerType'"
               effect-allowed="copyMove">
               <div class="panel__heading">
-                <h3>Container {{index+1}}</h3>
+                <h3>Container {{container.id}}</h3>
               </div>
               <div class="panel__body">
                 <vddl-list class="panel__body--list padding"
-                  :list="list"
+                  :list="container.list"
                   :horizontal="true"
                   :allowed-types="['itemType']"
                   :external-sources="true">
-                  <vddl-draggable v-for="(item, number) in list" :key="item.id" class="panel__body--item horizontal-item"
+                  <vddl-draggable v-for="(item, number) in container.list" :key="item.id" class="panel__body--item horizontal-item"
                     :draggable="item"
                     :type="'itemType'"
                     effect-allowed="copyMove"
                     :index="number"
-                    :wrapper="list">
+                    :wrapper="container.list">
                     {{item.label}}
                   </vddl-draggable >
                 </vddl-list>
@@ -50,19 +50,26 @@
 export default {
   data() {
     let lists = [];
-    let id = 10;
+    let cid = 1, lid = 1, iid = 1;
     for(var i = 0; i < 3; i++) {
-      lists.push([]);
+      lists.push({
+        id: cid++,
+        container: []
+      });
       for(var j = 0; j < 2; j++) {
-        lists[i].push([]);
+        lists[i].container.push({
+          id: lid++,
+          list: []
+        });
         for(var k = 0; k < 7; k++) {
-          lists[i][j].push({
-            "label": "Item " + id++,
-            "id": id++
-            });
+          lists[i].container[j].list.push({
+            "label": "Item " + iid++,
+            "id": iid
+          });
         }
       }
     }
+    console.log(lists);
     return {
       "lists": lists
     };

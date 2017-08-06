@@ -77,7 +77,7 @@
             <div class="panel__heading">
               <h3>Ashcan</h3>
             </div>
-            <vddl-list  :list="[]" class="panel__body">
+            <vddl-list :list="[]" class="panel__body">
               <img class="ashcan-logo" src="../assets/ashcan.png" alt="" />
             </vddl-list>
           </div>
@@ -210,7 +210,6 @@ export default {
   border-bottom: 1px solid #eee;
   padding: 0 15px;
   background: @placeholder-bg;
-  box-sizing: border-box;
 }
 
 /* new-elements */
@@ -223,6 +222,7 @@ export default {
   background-color: @base-color;
   color: #fff;
   cursor: move;
+  font-size: 14px;
 }
 
 .new-elements .vddl-dragging-source {
@@ -248,6 +248,9 @@ export default {
     display: block;
     width: 40px;
     margin: 10px auto;
+  }
+  .vddl-placeholder {
+    display: none;
   }
 }
 </style>

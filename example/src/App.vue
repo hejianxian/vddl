@@ -29,7 +29,8 @@ export default {
 @import './styles/index.less';
 
 .main {
-  min-height: 380px;
+  min-height: 350px;
+  padding-bottom: 30px;
 }
 </style>
 
