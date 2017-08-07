@@ -1,9 +1,10 @@
+<br>
+<br>  
 <p align="center">
   <a href="http://hejx.space/vddl">
-    <img src="https://raw.githubusercontent.com/hejianxian/vddl/dev/media/Vddl-logo-300.png" width="150" alt="vddl"/>
+    <img src="https://raw.githubusercontent.com/hejianxian/vddl/master/media/Vddl-400.png" width="180" alt="vddl"/>
   </a>
 </p>
-
 <p align="center">
   Vue components for modifying lists with the HTML5 drag & drop API.
 </p>
@@ -24,12 +25,13 @@
 
 
 ## Installation
-```
+
+````bash
 npm install --save vddl
 
 // or
 yarn add vddl
-```
+````
 
 ## Browser Support
 
@@ -37,7 +39,7 @@ Modern browsers and Internet Explorer 10+.
 
 ## Development
 
-```js
+````bash
 npm install
 npm run watch
 
@@ -47,7 +49,7 @@ npm run build
 // run example
 cd example && npm install
 npm run dev
-```
+````
 
 ## License
 
