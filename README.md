@@ -19,7 +19,7 @@
 ## Links
 
 - [Documentation](http://hejx.space/vddl)
-- [Demo](https://github.com/hejianxian/vddl)
+- [Online Demo](http://hejx.space/vddl-demo)
 - [Vue drag&drop lists](https://github.com/hejianxian/vue-drag-and-drop-list)
 
 
@@ -31,6 +31,15 @@ npm install --save vddl
 // or
 yarn add vddl
 ````
+
+## Usage
+
+```js
+import Vue from 'vue';
+import Vddl from 'vddl';
+
+Vue.use(Vddl);
+```
 
 ## Browser Support
 

@@ -7,7 +7,7 @@
       <h3>Vue components for modifying lists with the </h3>
       <h3>HTML5 drag & drop API.</h3>
       <div class="v-row buttons">
-        <div class="v-col--auto button"><a href="http://hejx.space/vddl" title="docs">Documents</a></div>
+        <div class="v-col--auto button"><a href="http://hejx.space/vddl" title="docs">Documentation</a></div>
         <div class="v-col--auto button"><a href="https://github.com/hejianxian/vddl" title="github">Github</a></div>
       </div>
       <v-menus></v-menus>
