@@ -1,5 +1,7 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/hejianxian/vddl/dev/media/Vddl-logo-300.png" width="150" center alt="vddl"/>
+  <a href="http://hejx.space/vddl">
+    <img src="https://raw.githubusercontent.com/hejianxian/vddl/dev/media/Vddl-logo-300.png" width="150" alt="vddl"/>
+  </a>
 </p>
 
 <p align="center">
@@ -18,16 +20,14 @@
 
 - [Documentation](http://hejx.space/vddl)
 - [Demo](https://github.com/hejianxian/vddl)
-- []()
+- [Vue drag&drop lists](https://github.com/hejianxian/vue-drag-and-drop-list)
+
 
 ## Installation
 ```
 npm install --save vddl
-```
 
-or
-
-```
+// or
 yarn add vddl
 ```
 
