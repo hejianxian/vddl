@@ -72,6 +72,5 @@ export default {
           if (err) throw err;
         });
       });
-  },
-  standalone: true, // custom option.
+  }
 };

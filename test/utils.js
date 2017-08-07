@@ -1,5 +1,7 @@
 import Vue from 'vue';
 
+Vue.config.productionTip = false;
+
 let id = 0;
 const createElm = () => {
   const elm = document.createElement('div');
