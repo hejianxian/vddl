@@ -1,8 +1,7 @@
 <br>
-<br>  
 <p align="center">
   <a href="http://hejx.space/vddl">
-    <img src="https://raw.githubusercontent.com/hejianxian/vddl/master/media/Vddl-400.png" width="180" alt="vddl"/>
+    <img src="https://raw.githubusercontent.com/hejianxian/vddl/master/media/Vddl-400.png" width="200" alt="vddl"/>
   </a>
 </p>
 <p align="center">
