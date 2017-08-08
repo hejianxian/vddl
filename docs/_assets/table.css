@@ -1,0 +1,21 @@
+/* table reset */
+.markdown-section table {
+  color: #34495e;
+  font-size: 13px;
+  display: table;
+}
+.markdown-section table thead th {
+  background: #F8F8F8;
+  text-align: left;
+  font-weight: normal;
+  color: #42B983;
+  height: 30px;
+}
+.markdown-section table tr {
+  border-top: 0;
+  border-bottom: 1px solid #F8F8F8;
+}
+.markdown-section table td, .markdown-section table th {
+  border: none;
+  padding: 10px 13px;
+}

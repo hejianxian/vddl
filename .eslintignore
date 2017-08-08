@@ -5,3 +5,4 @@ config/
 test/
 example/
 rollup.config.js
+docs/

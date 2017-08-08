@@ -1,11 +1,11 @@
-- [Getting started](guide)
+- Getting started
   - [Installation](guide/installation)
   - [Quick start](guide/quick-start)
-  - [Vuex](guide/vuex)
+  - [With Vuex](guide/vuex)
   - [Mobile](guide/mobile)
-  - [Vue 1.0](guide/vue1.0)
+  - [Vue drag&drop lists](guide/vue-dndl)
 
-- [Components](component)
+- Components
   - [vddl-draggable](component/vddl-draggable)
   - [vddl-list](component/vddl-list)
   - [vddl-handle](component/vddl-handle)

@@ -9,7 +9,7 @@
 - Simple and lightweight
 
 [GitHub](https://github.com/hejianxian/vddl)
-[Get Started](#quick-start)
+[Get Started](guide/installation)
 
 <!-- 背景色 -->
 ![color](#ffffff)

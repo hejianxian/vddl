@@ -1,2 +1,13 @@
-- [首页](zh-cn/)
-- [指南](zh-cn/guide)
+- 开始
+  - [安装](zh-cn/guide/installation)
+  - [快速开始](zh-cn/guide/quick-start)
+  - [使用 Vuex](zh-cn/guide/vuex)
+  - [在手机上使用](zh-cn/guide/mobile)
+  - [Vue-drag&drop-lists 指令](zh-cn/guide/vue-dndl)
+
+- 组件
+  - [vddl-draggable](zh-cn/component/vddl-draggable)
+  - [vddl-list](zh-cn/component/vddl-list)
+  - [vddl-handle](zh-cn/component/vddl-handle)
+  - [vddl-nodrag](zh-cn/component/vddl-nodrag)
+  - [vddl-placeholder](zh-cn/component/vddl-placeholder)

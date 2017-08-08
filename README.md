@@ -22,7 +22,6 @@
 - [Online Demo](http://hejx.space/vddl-demo)
 - [Vue drag&drop lists](https://github.com/hejianxian/vue-drag-and-drop-list)
 
-
 ## Installation
 
 ````bash
@@ -44,6 +43,8 @@ Vue.use(Vddl);
 ## Browser Support
 
 Modern browsers and Internet Explorer 10+.
+
+**Touch devices are not supported**, because they do not implement the HTML5 drag & drop standard. However, you can use a [shim](https://github.com/timruffles/ios-html5-drag-drop-shim) to make it work on touch devices as well.
 
 ## Development
 
