@@ -22,9 +22,9 @@ let banner =
 const config = {
   entry: 'src/install.js',
   targets: [
-    { format: 'es', dest: `dist/${pack.name}.js` },
+    { format: 'es', dest: `dist/${pack.name}.esm.js` },
     { format: 'cjs', dest: `dist/${pack.name}.common.js` },
-    { format: 'umd', dest: `dist/${pack.name}.umd.js`, moduleName: 'DragAndDropList' },
+    { format: 'umd', dest: `dist/${pack.name}.js`, moduleName: 'DragAndDropList' },
   ],
   plugins: [
     vue(vueConfig),
