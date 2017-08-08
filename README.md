@@ -5,7 +5,7 @@
   </a>
 </p>
 <p align="center">
-  Vue components for modifying lists with the HTML5 drag & drop API. Supports nested lists for building trees and other fancy structures.
+  Vue components for modifying lists with the HTML5 drag & drop API. 
 </p>
 
 <p align="center">
