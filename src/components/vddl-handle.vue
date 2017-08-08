@@ -35,9 +35,3 @@ export default {
   },
 };
 </script>
-
-<style lang="less">
-.ddl-handle {
-  color: #222;
-}
-</style>

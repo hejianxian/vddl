@@ -150,9 +150,3 @@ export default {
   },
 };
 </script>
-
-<style lang="less">
-.ddl-draggable {
-  color: #222;
-}
-</style>

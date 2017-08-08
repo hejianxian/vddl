@@ -269,8 +269,3 @@ export default {
 };
 </script>
 
-<style lang="less">
-.ddl-list {
-  color: #222;
-}
-</style>
