@@ -1,6 +1,6 @@
 {
   "name": "vddl",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Vue components for modifying lists with the HTML5 drag & drop API.",
   "jsnext": "dist/vddl.esm.js",
   "main": "dist/vddl.js",
@@ -12,8 +12,8 @@
     "compile": "rollup -c",
     "build": "npm run purge && npm run compile",
     "watch": "rollup -c -w",
-    "lint": "eslint src/* test/*",
-    "beforePublish": "npm run lint && npm run build",
+    "lint": "eslint src/*",
+    "prepublish": "npm run lint && npm run build",
     "docs": "docsify serve ./docs",
     "test": "ava"
   },
