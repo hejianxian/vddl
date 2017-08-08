@@ -2,7 +2,6 @@
   - [安装](zh-cn/guide/installation)
   - [快速开始](zh-cn/guide/quick-start)
   - [使用 Vuex](zh-cn/guide/vuex)
-  - [在手机上使用](zh-cn/guide/mobile)
   - [Vue-drag&drop-lists 指令](zh-cn/guide/vue-dndl)
 
 - 组件

@@ -2,7 +2,6 @@
   - [Installation](guide/installation)
   - [Quick start](guide/quick-start)
   - [With Vuex](guide/vuex)
-  - [Mobile](guide/mobile)
   - [Vue drag&drop lists](guide/vue-dndl)
 
 - Components

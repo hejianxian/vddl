@@ -1,6 +1,6 @@
 ## vddl-placeholder
 
-some info.
+Use the `vddl-placeholder` component, you can define your own placeholder. This component is of type div and has the class `vddl-placeholder` set.
 
 #### Usage
 
