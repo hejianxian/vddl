@@ -2,15 +2,16 @@
   "name": "vddl",
   "version": "0.2.2",
   "description": "Vue components for modifying lists with the HTML5 drag & drop API.",
-  "jsnext": "dist/vddl.esm.js",
-  "main": "dist/vddl.js",
+  "jsnext": "dist/vddl.runtime.esm.js",
+  "main": "dist/vddl.runtime.js",
   "directories": {
     "test": "test"
   },
   "scripts": {
     "purge": "rm -rf dist/",
-    "compile": "rollup -c",
-    "build": "npm run purge && npm run compile",
+    "build:runtime": "rollup -c",
+    "build:compiler": "rollup -c --compiler",
+    "build": "npm run purge && npm run build:runtime && npm run build:compiler",
     "watch": "rollup -c -w",
     "lint": "eslint src/*",
     "prepublish": "npm run lint && npm run build",
