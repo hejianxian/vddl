@@ -52,12 +52,12 @@ export default {
       }, 0);
 
       // Workarounds for stupid browsers, see description below
-      this.dndDropEffectWorkaround.dropEffect = "none";
-      this.dndDragTypeWorkaround.isDragging = true;
+      this.vddlDropEffectWorkaround.dropEffect = "none";
+      this.vddlDragTypeWorkaround.isDragging = true;
 
       // Save type of item in global state. Usually, this would go into the dataTransfer
       // typename, but we have to use "Text" there to support IE
-      this.dndDragTypeWorkaround.dragType = this.type || undefined;
+      this.vddlDragTypeWorkaround.dragType = this.type || undefined;
 
       // Try setting a proper drag image if triggered on a dnd-handle (won't work in IE).
       if (event._dndHandle && event.dataTransfer.setDragImage) {
@@ -75,7 +75,7 @@ export default {
     handleDragend(event) {
       event = event.originalEvent || event;
 
-      var dropEffect = this.dndDropEffectWorkaround.dropEffect;
+      var dropEffect = this.vddlDropEffectWorkaround.dropEffect;
       switch (dropEffect) {
         case "move":
           if (typeof(this.moved) === 'function') {
@@ -102,9 +102,9 @@ export default {
       // Clean up
       this.$el.className = this.$el.className.replace("vddl-dragging", "").trim();
       setTimeout(() => {
-        this.$el.className = this.$el.className.replace("vddl-dragging-source", "").trim();
+        if (this.$el) this.$el.className = this.$el.className.replace("vddl-dragging-source", "").trim();
       }, 0);
-      this.dndDragTypeWorkaround.isDragging = false;
+      this.vddlDragTypeWorkaround.isDragging = false;
       event.stopPropagation();
     },
 
@@ -126,21 +126,30 @@ export default {
       if (this.dragDrop) this.dragDrop();
       return false;
     },
+
+    // init
+    init() {
+      let status = true;
+      if (this.disableIf) status = false;
+      this.$el.setAttribute('draggable', status);
+
+      this.$el.addEventListener('dragstart', this.handleDragstart, false);
+      this.$el.addEventListener('dragend', this.handleDragend, false);
+      this.$el.addEventListener('click', this.handleClick, false);
+      this.$el.addEventListener('selectstart', this.handleSelected, false);
+    },
   },
   watch: {
     disableIf(val) {
       this.$el.setAttribute('draggable', !val);
     },
   },
+  // For Vue 1.0
+  ready() {
+    this.init();
+  },
   mounted() {
-    let status = true;
-    if (this.disableIf) status = false;
-    this.$el.setAttribute('draggable', status);
-
-    this.$el.addEventListener('dragstart', this.handleDragstart, false);
-    this.$el.addEventListener('dragend', this.handleDragend, false);
-    this.$el.addEventListener('click', this.handleClick, false);
-    this.$el.addEventListener('selectstart', this.handleSelected, false);
+    this.init();
   },
   beforeDestroy() {
     this.$el.removeEventListener('dragstart', this.handleDragstart, false);

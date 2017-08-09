@@ -4,8 +4,8 @@ import components from './main';
 export default {
   install(Vue) {
     /* eslint no-param-reassign: 0 */
-    Vue.prototype.dndDropEffectWorkaround = {};
-    Vue.prototype.dndDragTypeWorkaround = {};
+    Vue.prototype.vddlDropEffectWorkaround = {};
+    Vue.prototype.vddlDragTypeWorkaround = {};
 
     each(components, (component) => {
       /* eslint no-undef: 0 */

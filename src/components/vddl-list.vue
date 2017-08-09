@@ -130,12 +130,12 @@ export default {
       if (event.dataTransfer.dropEffect === "none") {
         if (event.dataTransfer.effectAllowed === "copy" ||
             event.dataTransfer.effectAllowed === "move") {
-          this.dndDropEffectWorkaround.dropEffect = event.dataTransfer.effectAllowed;
+          this.vddlDropEffectWorkaround.dropEffect = event.dataTransfer.effectAllowed;
         } else {
-          this.dndDropEffectWorkaround.dropEffect = event.ctrlKey ? "copy" : "move";
+          this.vddlDropEffectWorkaround.dropEffect = event.ctrlKey ? "copy" : "move";
         }
       } else {
-        this.dndDropEffectWorkaround.dropEffect = event.dataTransfer.dropEffect;
+        this.vddlDropEffectWorkaround.dropEffect = event.dataTransfer.dropEffect;
       }
 
       // Clean up
@@ -188,7 +188,7 @@ export default {
      */
     isDropAllowed(event) {
       // Disallow drop from external source unless it's allowed explicitly.
-      if (!this.dndDragTypeWorkaround.isDragging && !this.externalSources) return false;
+      if (!this.vddlDragTypeWorkaround.isDragging && !this.externalSources) return false;
 
       // Check mimetype. Usually we would use a custom drag type instead of Text, but IE doesn't
       // support that.
@@ -196,9 +196,9 @@ export default {
 
       // Now check the dnd-allowed-types against the type of the incoming element. For drops from
       // external sources we don't know the type, so it will need to be checked via dnd-drop.
-      if (this.allowedTypes && this.dndDragTypeWorkaround.isDragging) {
+      if (this.allowedTypes && this.vddlDragTypeWorkaround.isDragging) {
         var allowed = this.allowedTypes;
-        if (Array.isArray(allowed) && allowed.indexOf(this.dndDragTypeWorkaround.dragType) === -1) {
+        if (Array.isArray(allowed) && allowed.indexOf(this.vddlDragTypeWorkaround.dragType) === -1) {
           return false;
         }
       }
@@ -228,8 +228,8 @@ export default {
           event: event,
           index: index,
           item: item || undefined,
-          external: !this.dndDragTypeWorkaround.isDragging,
-          type: this.dndDragTypeWorkaround.isDragging ? this.dndDragTypeWorkaround.dragType : undefined
+          external: !this.vddlDragTypeWorkaround.isDragging,
+          type: this.vddlDragTypeWorkaround.isDragging ? this.vddlDragTypeWorkaround.dragType : undefined
         });
       }
       return fn ? true : false;
@@ -247,18 +247,23 @@ export default {
 
       return false;
     },
+    init() {
+      this.placeholderNode = this.getPlaceholderElement();
+      this.listNode = this.$el;
+      this.placeholderNode.parentNode && this.placeholderNode.parentNode.removeChild(this.placeholderNode);
+
+      // bind events
+      this.$el.addEventListener('dragenter', this.handleDragenter, false);
+      this.$el.addEventListener('dragover', this.handleDragover, false);
+      this.$el.addEventListener('drop', this.handleDrop, false);
+      this.$el.addEventListener('dragleave', this.handleDragleave, false);
+    },
+  },
+  ready() {
+    this.init();
   },
   mounted() {
-    this.placeholderNode = this.getPlaceholderElement();
-    this.listNode = this.$el;
-    this.placeholderNode.parentNode && this.placeholderNode.parentNode.removeChild(this.placeholderNode);
-
-    // bind events
-    this.$el.addEventListener('dragenter', this.handleDragenter, false);
-    this.$el.addEventListener('dragover', this.handleDragover, false);
-    this.$el.addEventListener('drop', this.handleDrop, false);
-    this.$el.addEventListener('dragleave', this.handleDragleave, false);
-
+    this.init();
   },
   beforeDestroy() {
     this.$el.removeEventListener('dragenter', this.handleDragenter, false);

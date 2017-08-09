@@ -31,12 +31,18 @@ export default {
         event.stopPropagation();
       }
     },
+    init() {
+      this.$el.setAttribute('draggable', true);
+
+      this.$el.addEventListener('dragstart', this.handleDragstart, false);
+      this.$el.addEventListener('dragend', this.handleDragend, false);
+    },
+  },
+  ready() {
+    this.init();
   },
   mounted() {
-    this.$el.setAttribute('draggable', true);
-
-    this.$el.addEventListener('dragstart', this.handleDragstart, false);
-    this.$el.addEventListener('dragend', this.handleDragend, false);
+    this.init();
   },
   beforeDestroy() {
     this.$el.removeEventListener('dragstart', this.handleDragstart, false);

@@ -1,5 +1,5 @@
-- Getting started
-  - [Installation](guide/installation)
+- Guide
+  - [Getting started](guide/getting-started)
   - [Quick start](guide/quick-start)
   - [With Vuex](guide/vuex)
   - [Vue drag&drop lists](guide/vue-dndl)

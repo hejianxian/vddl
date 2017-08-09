@@ -5,7 +5,7 @@
   </a>
 </p>
 <p align="center">
-  Vue components for modifying lists with the HTML5 drag & drop API. 
+  Vue components for modifying lists with the HTML5 drag & drop API.
 </p>
 
 <p align="center">
@@ -26,7 +26,7 @@
 ````bash
 npm install --save vddl
 
-// or
+# or
 yarn add vddl
 ````
 
@@ -48,17 +48,20 @@ Modern browsers and Internet Explorer 10+.
 ## Development
 
 ````bash
+# dev
 npm install
 npm run watch
 
-// build
+# build
 npm run build
 
-// run example
+# run example
 cd example && npm install
 npm run dev
 ````
 
 ## License
+
+MIT
 
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bhttps%3A%2F%2Fgithub.com%2Fhejianxian%2Fvddl.svg?type=large)](https://app.fossa.io/projects/git%2Bhttps%3A%2F%2Fgithub.com%2Fhejianxian%2Fvddl?ref=badge_large)
