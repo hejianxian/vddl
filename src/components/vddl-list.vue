@@ -119,7 +119,7 @@ export default {
         }
       }
 
-      // Insert the object into the array, unless dnd-drop took care of that (returned true).
+      // Insert the object into the array, unless drop took care of that (returned true).
       if (transferredObject !== true) {
         this.list.splice(index, 0, transferredObject);
       }
@@ -194,8 +194,8 @@ export default {
       // support that.
       if (!this.hasTextMimetype(event.dataTransfer.types)) return false;
 
-      // Now check the dnd-allowed-types against the type of the incoming element. For drops from
-      // external sources we don't know the type, so it will need to be checked via dnd-drop.
+      // Now check the allowed-types against the type of the incoming element. For drops from
+      // external sources we don't know the type, so it will need to be checked via drop.
       if (this.allowedTypes && this.vddlDragTypeWorkaround.isDragging) {
         var allowed = this.allowedTypes;
         if (Array.isArray(allowed) && allowed.indexOf(this.vddlDragTypeWorkaround.dragType) === -1) {

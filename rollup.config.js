@@ -14,14 +14,12 @@ if (process.argv.pop() === '--compiler') {
 };
 
 let cache;
-
-let pkg = require('./package.json');
 let banner =
   '/*!\n' +
-  ' * Vddl.js v' + pkg.version + '\n' +
+  ' * Vddl.js v' + pack.version + '\n' +
   ' * (c) ' + new Date().getFullYear() + ' Hejx\n' +
   ' * Released under the MIT License.\n' +
-	' * ' + pkg.homepage + '\n' +
+	' * ' + pack.homepage + '\n' +
   ' */\n';
 
 const config = {

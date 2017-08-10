@@ -42,7 +42,7 @@ export default {
       // Serialize the data associated with this element. IE only supports the Text drag type
       event.dataTransfer.setData("Text", draggable);
 
-      // Only allow actions specified in dnd-effect-allowed attribute
+      // Only allow actions specified in effect-allowed attribute
       event.dataTransfer.effectAllowed = this.effectAllowed || "move";
 
       // Add CSS classes. IE9 not support 'classList'
@@ -59,7 +59,7 @@ export default {
       // typename, but we have to use "Text" there to support IE
       this.vddlDragTypeWorkaround.dragType = this.type || undefined;
 
-      // Try setting a proper drag image if triggered on a dnd-handle (won't work in IE).
+      // Try setting a proper drag image if triggered on a vddl-handle (won't work in IE).
       if (event._dndHandle && event.dataTransfer.setDragImage) {
         event.dataTransfer.setDragImage(this.$el, event._dndHandleLeft, event._dndHandleTop);
       }
