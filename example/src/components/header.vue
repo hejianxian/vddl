@@ -1,7 +1,7 @@
 <template>
   <header class="header">
     <div class="header__container">
-      <a href="/" title="vddl">
+      <a class="logo" href="/" title="vddl">
         <img src="../assets/vddl.png" width="200" alt="vddl-logo">
       </a>
       <h3>Vue components for modifying lists with the </h3>
@@ -47,6 +47,9 @@ export default {
     align-items: center;
     a {
       margin-bottom: 20px;
+    }
+    .logo {
+      color: #fff;
     }
     h3 {
       margin: 5px 0;

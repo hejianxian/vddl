@@ -2,7 +2,7 @@
 
 Use the `vddl-list` component to make your list element a dropzone. Usually you will add a single div element as child with the 'v-for' directive. If you don't do that, we will not be able to position the dropped element correctly. If you want your list to be sortable, also add the `vddl-draggable` component to your children element(s). Both the `vddl-list` and it's direct children must have position: relative CSS style, otherwise the positioning algorithm will not be able to determine the correct placeholder position in all browsers.
 
-#### Usage
+#### Base Usage
 
 ```html
 <vddl-list :list="list" :horizontal="false">

@@ -29,3 +29,11 @@ import Vddl from 'vddl';
 
 Vue.use(Vddl);
 ```
+
+**Note:** If you are use Vue1.0, it should import like this:
+
+```js
+import Vddl from 'vddl/dist/vddl.js'; // Full build with template opiton
+```
+
+Because the default build mode is [runtime-only](https://vuejs.org/v2/guide/installation.html#Runtime-Compiler-vs-Runtime-only), and the main entry is `vddl.runtime.js`.

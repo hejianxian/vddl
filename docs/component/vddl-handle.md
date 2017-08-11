@@ -2,7 +2,7 @@
 
 Use the `vddl-handle` component within a `vddl-nodrag` element in order to allow dragging of that element after all. Therefore, by combining `vddl-nodrag` and `vddl-handle` you can allow `vddl-draggable` elements to only be dragged via specific **handle** elements.
 
-#### Usage
+#### Base Usage
 
 ```html
 <vddl-draggable v-for="(item, index) in list" :key="item.label"

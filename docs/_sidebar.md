@@ -3,6 +3,7 @@
   - [Quick start](guide/quick-start)
   - [With Vuex](guide/vuex)
   - [Vue drag&drop lists](guide/vue-dndl)
+  - [Examples](http://hejx.space/vddl-demo)
 
 - Components
   - [vddl-draggable](component/vddl-draggable)
