@@ -24,7 +24,7 @@
 ## Features
 
 - Supports VueJs versions 1.0 and 2.0
-- Supports all modern browsers and Internet Explorer 9+.
+- Supports all modern browsers and Internet Explorer 9+
 - Supports nested lists for building trees and other fancy structures
 
 **Touch devices are not supported**, because they do not implement the HTML5 drag & drop standard. However, you can use a [shim](https://github.com/timruffles/ios-html5-drag-drop-shim) to make it work on touch devices as well.
