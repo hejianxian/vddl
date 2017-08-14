@@ -45,12 +45,6 @@ import Vddl from 'vddl';
 Vue.use(Vddl);
 ```
 
-## Browser Support
-
-Modern browsers and Internet Explorer 9+.
-
-**Touch devices are not supported**, because they do not implement the HTML5 drag & drop standard. However, you can use a [shim](https://github.com/timruffles/ios-html5-drag-drop-shim) to make it work on touch devices as well.
-
 ## Development
 
 ````bash
