@@ -1,19 +1,19 @@
-## With Vuex
+## 使用 Vuex
 
-`Vddl` is not fully compatible with `Vuex` design, in the two main components `vddl-list` and `vddl-draggable` components, provides two callback method allows the user to control.
+`Vddl`并不是完全为了配合`Vuex`而设计的。在其中的两个核心组件`vddl-list`和`vddl-draggable`里，提供了2个回调事件供使用者来控制列表数据。
 
-* vddl-list: `drop` callback
-* vddl-draggable: `moved` callback
+* vddl-list: `drop`-插入数据
+* vddl-draggable: `moved`-删除数据
 
-When `drop` added to the `vddl-list` component, when you drag an item and are ready to drop somewhere in the list, `vddl` will cancel its own cut of the list data and invoke the drop method, and return the relevant data. Similarly, the `moved` method returns the dragged draggable data.
+当`drop`被添加到`vddl-list`组件上时，在拖动元素并且准备放置到某个位置时，`vddl`将会取消内部对列表数据的默认处理，而是触发`drop`事件，并返回对应的数据。同样，如果在`vddl-draggable`组件上添加`moved`事件，`vddl`同样也不会处理数据，而是将数据返回。
 
-In other words, vuex can only call the action in the two callback method to modify the state.
+也就是说，只能在这2个事件中，通过触发 actions 来修改 store 的 state。
 
 [Vuex demo](http://hejx.space/vddl-demo/#/vuex)
 
-#### Write template
+#### 编写模版
 
-Look at the code below, while adding the vddl-list `drop` and vddl-draggable `moved` method.
+代码如下，给`vddl-list`组件添加`drop`事件，并给`vddl-draggable`组件添加`moved`事件。
 
 ```html
 <vddl-list class="panel__body--list"
@@ -33,9 +33,9 @@ Look at the code below, while adding the vddl-list `drop` and vddl-draggable `mo
 </vddl-list>
 ```
 
-####  Add mutations
+####  添加 Mutations
 
-In `Vuex`, we simply add some code:
+简单地添加一些代码
 
 ```js
 // actions
@@ -63,9 +63,9 @@ const mutations = {
 };
 ```
 
-#### Dispatch actions
+#### 触发 Actions
 
-Then in the component mapping actions and props, and in the callback to add the appropriate action method:
+这里使用的是 Vuex 2.0版本，写法和1.0略有不同，需要手动绑定 actions 和 getters。然后在事件方法中，dispatch actions。
 
 ```js
 import { mapGetters, mapActions } from 'vuex';
@@ -89,8 +89,8 @@ export default {
 }
 ```
 
-#### Note
+#### 注意
 
-We all know that the data obtained from the store, must pass the action to dispatch the mutation to change state. So the above simple demo is normal operation.
+我们都知道，从 Vuex store 中获取的数据，只能通过触发 actions 来 dispatch mutations，从而改变 state。所以，上面的简单例子是可以正常运行的。但是例子中只是对单一的数组进行处理，如果像 [nested demo](http://hejx.space/vddl-demo/#/nested) 那样，存在多层嵌套的数组，那又应该怎样去确定每一次拖动应该对哪个数组进行操作呢？
 
-But we only operate on a single array, if there is something like nested demo, there are multiple nested data, it is difficult to find the location of the data should be interception. Perhaps adding a unique value to each layer of data is a good solution, from the draggable data is marked from what list of data, and then in the move and drop methods to retrieve the correct list of data to cut the data.
+也许一个比较好的解决方法是，给数据添加唯一的 id，并且确定父子之间的关系，例如在 draggable 数据中，标明来自那个父数据，这样做之后，在 drop 和 moved 事件中，可以获取到准确的数据位置，那也就可以正常地处理数据。

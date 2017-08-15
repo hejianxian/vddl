@@ -2,7 +2,6 @@
 
 `Vddl` is a series of vue components based on HTML5 drag &amp; drop API, including `vddl-draggable`, `vddl-list`, `vddl-handle`, `vddl-nodrag`, `vddl-placeholder`. It supports vue versions 1.0 and 2.0, supports all modern browsers, supports nested lists for building trees and other fancy structures.
 
-
 > **Touch devices are not supported**, because they do not implement the HTML5 drag & drop standard. However, you can use a [shim](https://github.com/timruffles/ios-html5-drag-drop-shim) to make it work on touch devices as well.
 
 Before the start, you should be familiar with these awesome tools/technologies:

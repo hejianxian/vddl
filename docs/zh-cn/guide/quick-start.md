@@ -1,12 +1,12 @@
-## Quick start
+## 快速开始
 
-Assuming you have successfully installed `vddl` and imported the file correctly, then let's start by making a simple draggable list.
+如果你已经正确地安装和引入`vddl`到项目中，那我们就可以开始制作一个简单的拖动列表。
 
 [Simple Demo](http://hejx.space/vddl-demo/#/simple)
 
-#### Prepare data
+#### 准备数据
 
-First, we will have a list of data as follows:
+首先，我们应该有一组数据如下：
 
 ```json
 "lists": {
@@ -27,11 +27,9 @@ First, we will have a list of data as follows:
 }
 ```
 
-#### Write template
+#### 编写模板
 
-We need to be aware that to make a draggable list, you need to use the `vddl-list` and `vddl-draggable` components at the same time.
-
-Suppose we now create a file called `simple.vue`. Because the components have been installed at `Vue.use (vddl)`, we do not need to re-introduce `vddl-list` and `vddl-draggable`, we can start directly.
+假设我们现在创建了一个叫`simple.vue`的文件。我们需要清楚地知道，制作一个拖动列表，需要同时使用 `vddl-list` 和 `vddl-draggable` 这两个组件。因为在调用`Vue.use(vddl)`时，组件已经被添加到全局的 components 上，所以无需再引入`vddl-list` 和 `vddl-draggable`组件。
 
 ```html
 <div v-for="(list, listName) in lists" class="v-col--auto">
@@ -55,15 +53,15 @@ Suppose we now create a file called `simple.vue`. Because the components have be
 </div>
 ```
 
-In the above code, pay attention to the list attribute of `vddl-list` and the draggable, index and wrapper attributes of `vddl-draggable`, all of which are required. Only by correctly passing in the value, `vddl` knows how to handle the list data when dragging.
+在上面的代码中，要注意`vddl-list`的 list 属性和`vddl-draggable`的 draggable，index 和 wrapper 属性，这些都是必须属性。并且只有正确地传值，`vddl` 才能知道如何处理列表数据。
 
-> `vddl-placeholder` is not required, the example is only to create a custom placeholder, by default, `vddl` will automatically create the placeholder element, and the element with `vddl-placeholder` class name.
+> `vddl-placeholder` 并不是必须的，在上面的 demo 里只是为了演示创建自定义的 placeholder。默认情况下，在拖动元素时，`vddl` 会自动创建一个 placeholder 元素，并且会带有 `vddl-placeholder` 类名。
 
-#### Style
+#### 样式
 
-> Each component in `vddl` will have a class name with the same name as the component name.
+> `vddl` 中的任意组件都会带有和组件名一致的 className.
 
-For the correct positioning of the placeholder element, the `vddl-list` and it's children must have position: relative. Otherwise we can not determine whether the mouse pointer is in the upper or lower half of the element we are dragging over. In other browsers we can use event.offsetY for this.
+为了正确定位 placeholder 元素，“vddl-list”及其子元素必须具有 position：relative。 否则，我们无法确定鼠标指针是否在我们拖动的元素的上半部分或下半部分。 在其他浏览器中，我们可以为此使用 event.offsetY。
 
 ```css
 .vddl-list, .vddl-draggable {
@@ -71,7 +69,7 @@ For the correct positioning of the placeholder element, the `vddl-list` and it's
 }
 ```
 
-The `vddl-list` should always have a min-height, otherwise you can't drop to it once it's empty.
+`vddl-list`应该始终有一个最小高度，否则在它为空时，我们无法拖动元素进去。
 
 ```css
 .vddl-list {
@@ -79,7 +77,7 @@ The `vddl-list` should always have a min-height, otherwise you can't drop to it 
 }
 ```
 
-The `vddl-dragging` and `vddl-dragging-source` class will be applied to the source element of a drag operation. It makes sense to hide it to give the user the feeling that he's actually moving it.
+`vddl-dragging`和`vddl-dragging-source`类名将被添加到拖动的源元素。将其隐藏，主要是给用户一种在移动它的感觉。
 
 ```css
 .vddl-dragging{
@@ -91,7 +89,7 @@ The `vddl-dragging` and `vddl-dragging-source` class will be applied to the sour
 }
 ```
 
-#### Note
+#### ⚠️注意
 
 ```html
 <!-- error -->
@@ -100,10 +98,9 @@ The `vddl-dragging` and `vddl-dragging-source` class will be applied to the sour
 </ul>
 ```
 
-In vue2.0, the above way uses the `v-for` directive, key attribute can not directly use `index`, which will lead to `vddl` reset list and vue some of the internal mechanism of conflict, resulting in drag problems.
+在 Vue2.0 中，像上面的代码那样，我们使用`v-for`指令进行遍历，key 属性请不要使用 `index`。因为 `vddl` 内部对数据是会进行2次裁剪，如果使用了 `index`, 那在第一次裁剪后，Vue 会重新计算并排序，这样会导致第二次的运算出错，这样就会在拖动时，出现数据错乱的情况。
 
-
-So, you should set a unique address for the key attribute, such as uuid. This needs to be clear when setting the list data.
+所以，最好的做法是给数据添加唯一值，例如 uuid。
 
 ```html
 <!-- correct  -->
