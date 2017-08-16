@@ -1,11 +1,11 @@
 ## vddl-handle
 
-Use the `vddl-handle` component within a `vddl-nodrag` element in order to allow dragging of that element after all. Therefore, by combining `vddl-nodrag` and `vddl-handle` you can allow `vddl-draggable` elements to only be dragged via specific **handle** elements.
+在`vddl-nodrag`元素中使用`vddl-handle`组件，以便允许拖动该元素。 因此，通过组合`vddl-nodrag`和`vddl-handle`，您能制定自定义的句柄元素（handle）拖动`vddl-draggable`元素。
 
-#### Base Usage
+#### 基本用法
 
 ```html
-<vddl-draggable v-for="(item, index) in list" :key="item.label"
+<vddl-draggable v-for="(item, index) in list" :key="item.id"
   :draggable="item"
   :index="index"
   :wrapper="list"
@@ -21,8 +21,8 @@ Use the `vddl-handle` component within a `vddl-nodrag` element in order to allow
 </vddl-draggable>
 ```
 
-#### Attributes
+#### 属性
 
-Use the `handle-left` or `handle-top` attributes can help you custom position of the drag item.
+使用`handle-left`或`handle-top`属性可以帮助你自定义拖动项的位置。
 
-> Internet Explorer will show the handle element as drag image instead of the `vddl-draggable` element. You can work around this by styling the handle element differently when it is being dragged. Use the CSS selector `.vddl-dragging:not(.vddl-dragging-source) .vddl-handle` for that.
+> Internet Explorer 将把 handle 元素显示为拖动图像而不是`vddl-draggable`元素。 您可以通过在拖动时对句柄元素进行不同的样式设计来解决此问题。 使用CSS选择器`.vddl-dragging：not（.vddl-dragging-source）.vddl-handle`。

@@ -5,7 +5,7 @@ Use the `vddl-handle` component within a `vddl-nodrag` element in order to allow
 #### Base Usage
 
 ```html
-<vddl-draggable v-for="(item, index) in list" :key="item.label"
+<vddl-draggable v-for="(item, index) in list" :key="item.id"
   :draggable="item"
   :index="index"
   :wrapper="list"

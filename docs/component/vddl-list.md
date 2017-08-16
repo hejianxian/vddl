@@ -39,6 +39,7 @@ Use the `vddl-list` component to make your list element a dropzone. Usually you 
       * Otherwise: All other return values will be treated as the object to insert into the array. In most cases you simply want to return the `item` parameter, but there are no restrictions on what you can return.
 * `inserted` Optional expression that is invoked after a drop if the element was actually inserted into the list. The same local variables as for `drop` will be available. Note that for reorderings inside the same list the old element will still be in the list due to the fact that `moved` was not called yet.
 
-**CSS classes**
+#### CSS classes
+
 * `vddl-placeholder` When an element is dragged over the list, a new placeholder child element will be added. This element is of type `div` and has the class `vddl-placeholder` set. Alternatively, you can define your own placeholder by creating a child element with `vddl-placeholder` class.
 * `vddl-dragover` This class will be added to the list while an element is being dragged over the list.

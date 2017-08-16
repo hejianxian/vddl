@@ -1,8 +1,8 @@
 ## vddl-nodrag
 
-Use the `vddl-nodrag` component inside of `vddl-draggable` elements to prevent them from starting drag operations. This is especially useful if you want to use input elements inside of `vddl-draggable` elements or create specific handle elements.
+在 `vddl-draggable` 元素内使用 `vddl-nodrag` 可以阻止拖动行为。当希望拖动一个带有 input 元素的`vddl-draggable`元素，或者带有自定义的拖动块时，这将会非常有用。
 
-#### Base Usage
+#### 基本用法
 
 ```html
 <vddl-nodrag class="nodrag">
@@ -10,6 +10,6 @@ Use the `vddl-nodrag` component inside of `vddl-draggable` elements to prevent t
 </vddl-nodrag>
 ```
 
-#### Attributes
+#### 属性
 
-No.
+无。

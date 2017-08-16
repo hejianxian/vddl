@@ -1,8 +1,8 @@
 ## vddl-placeholder
 
-Use the `vddl-placeholder` component, you can define your own placeholder. This component is of type div and has the class `vddl-placeholder` set.
+使用 `vddl-placeholder` 组件，你可以自定义占位符（placeholder）。这组件只是一个 DIV 元素并且自带 `vddl-placeholder` 类名。
 
-#### Base Usage
+#### 基本用法
 
 ```html
 <vddl-placeholder>
@@ -10,6 +10,6 @@ Use the `vddl-placeholder` component, you can define your own placeholder. This 
 </vddl-placeholder>
 ```
 
-#### Attributes
+#### 属性
 
-No.
+无。

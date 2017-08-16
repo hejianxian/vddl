@@ -32,7 +32,7 @@ Use the `vddl-draggable` component to make your element draggable.
 #### Callbacks
 
 * `moved` Callback that is invoked when the element was moved.
-* `copied` Same as dnd-moved, just that it is called when the element was copied instead of moved.
+* `copied` Same as 'moved', just that it is called when the element was copied instead of moved.
 * `canceled` Callback that is invoked if the element was dragged, but the operation was canceled and the element was not dropped.
 * `dragstart` Callback that is invoked when the element was dragged.
 * `dragend` Callback that is invoked when the drag operation ended.
