@@ -8,7 +8,11 @@
               <h3>List {{listName}}</h3>
             </div>
             <div class="panel__body">
-              <vddl-list class="panel__body--list" :list="list" :horizontal="false">
+              <vddl-list class="panel__body--list"
+                  :list="list"
+                  :inserted="handleInserted"
+                  :drop="handleDrop"
+                  :horizontal="false">
                   <vddl-draggable class="panel__body--item" v-for="(item, index) in list" :key="item.label"
                     :draggable="item"
                     :index="index"
@@ -19,6 +23,7 @@
                     :dragstart="handleDragstart"
                     :dragend="handleDragend"
                     :canceled="handleCanceled"
+                    :moved="handleMoved"
                     v-bind:class="{'selected': selected === item}">
                     {{item.label}}
                   </vddl-draggable>
@@ -96,13 +101,22 @@ export default {
       this.selected = item;
     },
     handleDragstart() {
-      console.log('handleDragstart');
+      console.log(':v-draggable: dragstart');
     },
     handleDragend() {
-      console.log('handleDragend');
+      console.log(':v-draggable: dragend');
     },
     handleCanceled() {
-      console.log('handleCanceled');
+      console.log(':v-draggable: canceled');
+    },
+    handleInserted() {
+      console.log(':v-list: inserted');
+    },
+    handleDrop() {
+      console.log(':v-list: drop');
+    },
+    handleMoved() {
+      console.log(':v-draggable: moved');
     },
   },
 };
