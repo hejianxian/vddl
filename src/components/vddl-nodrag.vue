@@ -14,8 +14,6 @@ export default {
   computed: {},
   methods: {
     handleDragstart(event) {
-      event = event.originalEvent || event;
-
       if (!event._dndHandle) {
         // If a child element already reacted to dragstart and set a dataTransfer object, we will
         // allow that. For example, this is the case for user selections inside of input elements.
@@ -26,7 +24,6 @@ export default {
       }
     },
     handleDragend(event) {
-      event = event.originalEvent || event;
       if (!event._dndHandle) {
         event.stopPropagation();
       }

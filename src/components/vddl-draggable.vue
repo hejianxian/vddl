@@ -33,7 +33,6 @@ export default {
   computed: {},
   methods: {
     handleDragstart(event) {
-      event = event.originalEvent || event;
 
       var draggable = JSON.stringify(this.draggable);
       // Check whether the element is draggable, since dragstart might be triggered on a child.
@@ -73,8 +72,6 @@ export default {
     },
 
     handleDragend(event) {
-      event = event.originalEvent || event;
-
       var dropEffect = this.vddlDropEffectWorkaround.dropEffect;
       switch (dropEffect) {
         case "move":
@@ -111,7 +108,6 @@ export default {
     handleClick(event) {
       if (!this.selected) return;
 
-      event = event.originalEvent || event;
       if (typeof(this.selected) === 'function') {
         this.selected(this.wrapper[this.index], event.target);
       }

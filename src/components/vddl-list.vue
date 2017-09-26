@@ -26,14 +26,11 @@ export default {
   computed: {},
   methods: {
     handleDragenter(event) {
-      event = event.originalEvent || event;
       if (!this.isDropAllowed(event)) return true;
       event.preventDefault();
     },
 
     handleDragover(event) {
-      event = event.originalEvent || event;
-
       if (!this.isDropAllowed(event)) return true;
 
       if (this.placeholderNode.parentNode != this.listNode) {
@@ -92,8 +89,6 @@ export default {
       return false;
     },
     handleDrop(event) {
-      event = event.originalEvent || event;
-
       if (!this.isDropAllowed(event)) return true;
 
       // The default behavior in Firefox is to interpret the dropped element as URL and
@@ -144,7 +139,6 @@ export default {
       return false;
     },
     handleDragleave(event) {
-      event = event.originalEvent || event;
       this.$el.className = this.$el.className.replace("vddl-dragover", "").trim();
       setTimeout(() => {
         if (this.$el.className.indexOf("vddl-dragover") < 0) {

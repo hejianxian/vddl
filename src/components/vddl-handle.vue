@@ -17,7 +17,6 @@ export default {
   computed: {},
   methods: {
     handle(event) {
-      event = event.originalEvent || event;
       event._dndHandle = true;
       event._dndHandleLeft = this.handleLeft || 0;
       event._dndHandleTop = this.handleTop || 0;
