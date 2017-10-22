@@ -78,7 +78,7 @@ export default {
 
       // At this point we invoke the callback, which still can disallow the drop.
       // We can't do this earlier because we want to pass the index of the placeholder.
-      if (this.dndDragover && !this.invokeCallback('dragover', event, getPlaceholderIndex())) {
+      if (this.dragover && !this.invokeCallback('dragover', event, this.getPlaceholderIndex())) {
         return this.stopDragover(event);
       }
 
