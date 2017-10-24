@@ -1,5 +1,7 @@
 <template>
-  <div class="vddl-nodrag">
+  <div class="vddl-nodrag"
+    @dragstart="handleDragstart"
+    @dragend="handleDragend">
     <slot></slot>
   </div>
 </template>
@@ -30,9 +32,6 @@ export default {
     },
     init() {
       this.$el.setAttribute('draggable', true);
-
-      this.$el.addEventListener('dragstart', this.handleDragstart, false);
-      this.$el.addEventListener('dragend', this.handleDragend, false);
     },
   },
   ready() {
@@ -40,10 +39,6 @@ export default {
   },
   mounted() {
     this.init();
-  },
-  beforeDestroy() {
-    this.$el.removeEventListener('dragstart', this.handleDragstart, false);
-    this.$el.removeEventListener('dragend', this.handleDragend, false);
   },
 };
 </script>

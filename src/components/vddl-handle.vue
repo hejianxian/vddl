@@ -1,5 +1,7 @@
 <template>
-  <div class="vddl-handle">
+  <div class="vddl-handle"
+    @dragstart="handle"
+    @dragend="handle">
     <slot></slot>
   </div>
 </template>
@@ -23,9 +25,6 @@ export default {
     },
     init() {
       this.$el.setAttribute('draggable', true);
-
-      this.$el.addEventListener('dragstart', this.handle, false);
-      this.$el.addEventListener('dragend', this.handle, false);
     },
   },
   ready() {
@@ -33,10 +32,6 @@ export default {
   },
   mounted() {
     this.init();
-  },
-  beforeDestroy() {
-    this.$el.removeEventListener('dragstart', this.handle, false);
-    this.$el.removeEventListener('dragend', this.handle, false);
   },
 };
 </script>

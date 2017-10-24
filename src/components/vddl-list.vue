@@ -1,5 +1,9 @@
 <template>
-  <div class="vddl-list">
+  <div class="vddl-list"
+    @dragenter.prevent="handleDragenter"
+    @dragover.stop.prevent="handleDragover"
+    @drop.stop.prevent="handleDrop"
+    @dragleave="handleDragleave">
     <slot></slot>
   </div>
 </template>
@@ -27,7 +31,6 @@ export default {
   methods: {
     handleDragenter(event) {
       if (!this.isDropAllowed(event)) return true;
-      event.preventDefault();
     },
 
     handleDragover(event) {
@@ -83,9 +86,6 @@ export default {
       }
 
       if (this.$el.className.indexOf("vddl-dragover") < 0) this.$el.className = this.$el.className.trim() + " vddl-dragover";
-
-      event.preventDefault();
-      event.stopPropagation();
       return false;
     },
     handleDrop(event) {
@@ -93,7 +93,6 @@ export default {
 
       // The default behavior in Firefox is to interpret the dropped element as URL and
       // forward to it. We want to prevent that even if our drop is aborted.
-      event.preventDefault();
 
       // Unserialize the data that was serialized in dragstart. According to the HTML5 specs,
       // the "Text" drag type will be converted to text/plain, but IE does not do that.
@@ -135,7 +134,6 @@ export default {
 
       // Clean up
       this.stopDragover();
-      event.stopPropagation();
       return false;
     },
     handleDragleave(event) {
@@ -222,6 +220,7 @@ export default {
           event: event,
           index: index,
           item: item || undefined,
+          list: this.list,
           external: !this.vddlDragTypeWorkaround.isDragging,
           type: this.vddlDragTypeWorkaround.isDragging ? this.vddlDragTypeWorkaround.dragType : undefined
         });
@@ -245,12 +244,6 @@ export default {
       this.placeholderNode = this.getPlaceholderElement();
       this.listNode = this.$el;
       this.placeholderNode.parentNode && this.placeholderNode.parentNode.removeChild(this.placeholderNode);
-
-      // bind events
-      this.$el.addEventListener('dragenter', this.handleDragenter, false);
-      this.$el.addEventListener('dragover', this.handleDragover, false);
-      this.$el.addEventListener('drop', this.handleDrop, false);
-      this.$el.addEventListener('dragleave', this.handleDragleave, false);
     },
   },
   ready() {
@@ -258,12 +251,6 @@ export default {
   },
   mounted() {
     this.init();
-  },
-  beforeDestroy() {
-    this.$el.removeEventListener('dragenter', this.handleDragenter, false);
-    this.$el.removeEventListener('dragover', this.handleDragover, false);
-    this.$el.removeEventListener('drop', this.handleDrop, false);
-    this.$el.removeEventListener('dragleave', this.handleDragleave, false);
   },
 };
 </script>

@@ -1,5 +1,9 @@
 <template>
-  <div class="vddl-draggable">
+  <div class="vddl-draggable"
+    @dragstart.stop="handleDragstart"
+    @dragend.stop="handleDragend"
+    @click.stop="handleClick"
+    @selectstart="handleSelected">
     <slot></slot>
   </div>
 </template>
@@ -33,7 +37,6 @@ export default {
   computed: {},
   methods: {
     handleDragstart(event) {
-
       var draggable = JSON.stringify(this.draggable);
       // Check whether the element is draggable, since dragstart might be triggered on a child.
       if (draggable == 'false' || this.disableIf) return true;
@@ -67,8 +70,6 @@ export default {
       if (typeof(this.dragstart) === 'function') {
         this.dragstart.call(this, event.target);
       }
-
-      event.stopPropagation();
     },
 
     handleDragend(event) {
@@ -76,7 +77,12 @@ export default {
       switch (dropEffect) {
         case "move":
           if (typeof(this.moved) === 'function') {
-            this.moved(this.index, event.target);
+            this.moved({
+              index: this.index,
+              list: this.wrapper,
+              event: event.target,
+              draggable: this.draggable,
+            });
           } else {
             this.wrapper.splice(this.index, 1);
           }
@@ -102,7 +108,6 @@ export default {
         if (this.$el) this.$el.className = this.$el.className.replace("vddl-dragging-source", "").trim();
       }, 0);
       this.vddlDragTypeWorkaround.isDragging = false;
-      event.stopPropagation();
     },
 
     handleClick(event) {
@@ -111,7 +116,6 @@ export default {
       if (typeof(this.selected) === 'function') {
         this.selected(this.wrapper[this.index], event.target);
       }
-      event.stopPropagation();
     },
 
     /**
@@ -128,11 +132,6 @@ export default {
       let status = true;
       if (this.disableIf) status = false;
       this.$el.setAttribute('draggable', status);
-
-      this.$el.addEventListener('dragstart', this.handleDragstart, false);
-      this.$el.addEventListener('dragend', this.handleDragend, false);
-      this.$el.addEventListener('click', this.handleClick, false);
-      this.$el.addEventListener('selectstart', this.handleSelected, false);
     },
   },
   watch: {
@@ -146,12 +145,6 @@ export default {
   },
   mounted() {
     this.init();
-  },
-  beforeDestroy() {
-    this.$el.removeEventListener('dragstart', this.handleDragstart, false);
-    this.$el.removeEventListener('dragend', this.handleDragend, false);
-    this.$el.removeEventListener('click', this.handleClick, false);
-    this.$el.removeEventListener('selectstart', this.handleSelected, false);
   },
 };
 </script>
