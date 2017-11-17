@@ -8,7 +8,7 @@
     "test": "test"
   },
   "scripts": {
-    "purge": "rm -rf dist/",
+    "purge": "shx rm -rf dist/",
     "build:runtime": "rollup -c",
     "build:compiler": "rollup -c --compiler",
     "build": "npm run purge && npm run build:runtime && npm run build:compiler",
@@ -47,7 +47,8 @@
     "rollup-plugin-commonjs": "^5.0.5",
     "rollup-plugin-node-resolve": "^2.0.0",
     "rollup-plugin-vue": "^2.2.6",
-    "rollup-watch": "^2.5.0"
+    "rollup-watch": "^2.5.0",
+    "shx": "^0.2.2"
   },
   "homepage": "https://github.com/hejianxian/vddl#readme",
   "babel": {
