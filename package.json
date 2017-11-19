@@ -1,6 +1,6 @@
 {
   "name": "vddl",
-  "version": "0.6.0",
+  "version": "0.7.0",
   "description": "Vue components for modifying lists with the HTML5 drag & drop API.",
   "jsnext": "dist/vddl.runtime.esm.js",
   "main": "dist/vddl.runtime.js",
@@ -8,10 +8,10 @@
     "test": "test"
   },
   "scripts": {
-    "purge": "shx rm -rf dist/",
+    "clean": "node scripts/clean.js",
     "build:runtime": "rollup -c",
     "build:compiler": "rollup -c --compiler",
-    "build": "npm run purge && npm run build:runtime && npm run build:compiler",
+    "build": "npm run clean && npm run build:runtime && npm run build:compiler",
     "watch": "rollup -c -w",
     "lint": "eslint src/*",
     "prepublish": "npm run lint && npm run build",
@@ -25,7 +25,6 @@
   "author": "Hejx <531601727@qq.com>",
   "license": "MIT",
   "dependencies": {
-    "lodash": "^4.16.4",
     "vue": "^2.4.2"
   },
   "devDependencies": {
@@ -47,8 +46,7 @@
     "rollup-plugin-commonjs": "^5.0.5",
     "rollup-plugin-node-resolve": "^2.0.0",
     "rollup-plugin-vue": "^2.2.6",
-    "rollup-watch": "^2.5.0",
-    "shx": "^0.2.2"
+    "rollup-watch": "^2.5.0"
   },
   "homepage": "https://github.com/hejianxian/vddl#readme",
   "babel": {
