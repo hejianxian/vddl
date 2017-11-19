@@ -77,14 +77,18 @@ export default {
       switch (dropEffect) {
         case "move":
           if (typeof(this.moved) === 'function') {
-            this.moved({
-              index: this.index,
-              list: this.wrapper,
-              event: event.target,
-              draggable: this.draggable,
+            this.$nextTick(() => {
+              this.moved({
+                index: this.index,
+                list: this.wrapper,
+                event: event.target,
+                draggable: this.draggable,
+              });
             });
           } else {
-            this.wrapper.splice(this.index, 1);
+            this.$nextTick(() => {
+              this.wrapper.splice(this.index, 1);
+            });
           }
           break;
         case "copy":
