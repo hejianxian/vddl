@@ -53,14 +53,12 @@ export default {
       'inserItem',
       'delItem'
     ]),
-    handleMoved(index) {
+    handleMoved({ index }) {
       this.$store.dispatch('delItem', index);
-
       this.mutations.push({ id: this.id++, type: 'DELETE_ITEM', index: index - 1});
     },
     handleDrop(draggable) {
       this.$store.dispatch('inserItem', draggable);
-
       this.mutations.push({ id: this.id++, type: 'INSERT_ITEM', index: draggable.index});
     }
 
