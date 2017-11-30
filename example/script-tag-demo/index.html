@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>vddl-example</title>
+    <link rel="stylesheet" href="./style.css">
+  </head>
+  <body>
+    <div id="app">
+      <div class="v-row">
+        <div v-for="(list, listName) in lists" class="v-col--auto">
+          <div class="panel">
+              <div class="panel__heading">
+                <h3>List {{listName}}</h3>
+              </div>
+              <div class="panel__body">
+                <vddl-list class="panel__body--list"
+                    :list="list"
+                    :horizontal="false">
+                    <vddl-draggable class="panel__body--item" v-for="(item, index) in list" :key="item.label"
+                      :draggable="item"
+                      :index="index"
+                      :wrapper="list"
+                      effect-allowed="move">
+                      {{item.label}}
+                    </vddl-draggable>
+                    <vddl-placeholder class="red">Custom placeholder</vddl-placeholder>
+                </vddl-list>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="//cdn.jsdelivr.net/npm/vue"></script>
+    <script src="./vddl.runtime.js"></script>
+    <script>
+      new Vue({
+        el: '#app',
+        data: function() {
+          return {
+            "lists": {
+              "A": [
+                {
+                  "label": "Item A1",
+                },
+                {
+                  "label": "Item A2",
+                },
+                {
+                  "label": "Item A3",
+                },
+              ],
+              "B": [
+                {
+                  "label": "Item B1",
+                },
+                {
+                  "label": "Item B2",
+                },
+                {
+                  "label": "Item B3",
+                },
+              ],
+              "C": [
+                {
+                  "label": "Item C1",
+                },
+                {
+                  "label": "Item C2",
+                },
+                {
+                  "label": "Item C3",
+                },
+              ],
+            },
+          };
+        },
+        created: function() {},
+      });
+    </script>
+  </body>
+</html>
