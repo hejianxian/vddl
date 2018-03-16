@@ -14,6 +14,25 @@
   <a href="https://app.fossa.io/projects/git%2Bhttps%3A%2F%2Fgithub.com%2Fhejianxian%2Fvddl?ref=badge_shield" alt="FOSSA Status"><img src="https://app.fossa.io/api/projects/git%2Bhttps%3A%2F%2Fgithub.com%2Fhejianxian%2Fvddl.svg?type=shield"/></a>
 </p>
 
+## 💥Warning💥
+
+* 1. Don't set `index` to the `:key`, it will cause dragging confusion.
+
+```html
+<vddl-list :list="list">
+    <vddl-draggable class="panel__body--item" 
+      v-for="(item, index) in list" 
+      :key="item.id" // It's best to use a unique id. Remember, don't use 'index'.
+      ...
+      >
+      {{item.label}}
+    </vddl-draggable>
+</vddl-list>
+```
+
+* 2. "[Vue warn]: Duplicate keys detected: 'A-1'. This may cause an update error. "
+
+Why is this wrong? Because in Vue.js v2.5.0 version, The `nextTick`'s implementation has changed, specific can see [here](https://github.com/vuejs/vue/releases/tag/v2.5.0). The reason for throwing this error is that when the element is dropped onto the list, a duplicate object is inserted into the array. Now I think this can be done for you. Add a `drop` event to the `vddl-list` and add a `moved` event to the `vddl-draggable`. Then you need to splice the array manually. 
 
 ## Links
 
