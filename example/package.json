@@ -57,7 +57,7 @@
     "node": ">= 4.0.0",
     "npm": ">= 3.0.0"
   },
-  "browserslist":  {
+  "browserslist": {
     "production": [
       "last 2 version",
       "ie 9"

@@ -14,7 +14,7 @@
                   :dragover="handleDragover"
                   :drop="handleDrop"
                   :horizontal="false">
-                  <vddl-draggable class="panel__body--item" v-for="(item, index) in list" :key="item.label"
+                  <vddl-draggable class="panel__body--item" v-for="(item, index) in list" :key="item.id"
                     :draggable="item"
                     :index="index"
                     :wrapper="list"
@@ -45,52 +45,67 @@ export default {
       "lists": {
         "A": [
           {
+            "id": 1,
             "label": "Item A1"
           },
           {
+            "id": 2,
             "label": "Item A2"
           },
           {
+            "id": 3,
             "label": "Item A3"
           },
           {
+            "id": 4,
             "label": "Item A4"
           },
           {
+            "id": 5,
             "label": "Item A5"
           }
         ],
         "B": [
           {
+            "id": 6,
             "label": "Item B1"
           },
           {
+            "id": 7,
             "label": "Item B2"
           },
           {
+            "id": 8,
             "label": "Item B3"
           },
           {
+            "id": 9,
             "label": "Item B4"
           },
           {
+            "id": 10,
             "label": "Item B5"
           }
         ],
         "C": [
           {
+            "id": 11,
             "label": "Item C1"
           },
           {
+            "id": 12,
             "label": "Item C2"
           },
           {
+            "id": 13,
             "label": "Item C3"
           },
           {
+            "id": 14,
             "label": "Item C4"
           },
           {
+            "id": 15,
             "label": "Item C5"
           }
         ]
@@ -117,6 +132,8 @@ export default {
       console.log(':v-list: drop');
       console.log(data);
       const { index, list, item } = data;
+      // change the id
+      item.id = new Date().getTime();
       list.splice(index, 0, item);
     },
     handleMoved(item) {
