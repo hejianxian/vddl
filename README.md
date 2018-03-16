@@ -32,7 +32,7 @@
 
 * 2. "[Vue warn]: Duplicate keys detected: 'A-1'. This may cause an update error. "
 
-Why is this wrong? Because in Vue.js v2.5.0 version, The `nextTick`'s implementation has changed, specific can see [here](https://github.com/vuejs/vue/releases/tag/v2.5.0). The reason for throwing this error is that when the element is dropped onto the list, a duplicate object is inserted into the array. Now I think this can be done for you. Add a `drop` event to the `vddl-list` and add a `moved` event to the `vddl-draggable`. Then you need to splice the array manually. 
+Why is this wrong? Because in Vue.js v2.5.0 version, The `nextTick`'s implementation has changed, specific can see [here](https://github.com/vuejs/vue/releases/tag/v2.5.0). The reason for throwing this error is that when the element is dropped onto the list, a duplicate object is inserted into the array. Now I think this can be done for you. Add a `drop` event to the `vddl-list` and add a `moved` event to the `vddl-draggable`. Then you need to splice the array manually. See the [demo source code](https://github.com/hejianxian/vddl/blob/master/example/src/views/simple.vue#L131-L144)
 
 ## Links
 
