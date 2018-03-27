@@ -1,5 +1,6 @@
 <template>
   <div class="vddl-draggable"
+    :is="tag"
     @dragstart.stop="handleDragstart"
     @dragend.stop="handleDragend"
     @click.stop="handleClick"
@@ -16,6 +17,10 @@ export default {
     draggable: [ Object, Array ],
     wrapper: Array,
     index: Number,
+    tag: {
+      type: String,
+      default: 'div'
+    },
 
     effectAllowed: String,
     type: String,
