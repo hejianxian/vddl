@@ -1,5 +1,6 @@
 <template>
   <div class="vddl-list"
+    :is="tag"
     @dragenter.prevent="handleDragenter"
     @dragover.stop.prevent="handleDragover"
     @drop.stop.prevent="handleDrop"
@@ -14,6 +15,10 @@ export default {
   // css: placeholder, dragover
   props: {
     list: Array,
+    tag: {
+      type: String,
+      default: 'div'
+    },
 
     allowedTypes: Array,
     disableIf: Boolean,

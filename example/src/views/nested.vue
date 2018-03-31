@@ -25,7 +25,7 @@
               </list>
             </vddl-list>
           </div>
-          </div>
+        </div>
       </div>
       <div class="v-col--20">
         <div class="new-elements">
