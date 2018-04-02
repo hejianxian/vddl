@@ -1,0 +1,153 @@
+{
+  "IcoMoonType": "selection",
+  "icons": [
+    {
+      "icon": {
+        "paths": [
+          "M917.806 229.076c-22.212-30.292-53.174-65.7-87.178-99.704s-69.412-64.964-99.704-87.178c-51.574-37.82-76.592-42.194-90.924-42.194h-496c-44.112 0-80 35.888-80 80v864c0 44.112 35.888 80 80 80h736c44.112 0 80-35.888 80-80v-624c0-14.332-4.372-39.35-42.194-90.924zM785.374 174.626c30.7 30.7 54.8 58.398 72.58 81.374h-153.954v-153.946c22.984 17.78 50.678 41.878 81.374 72.572zM896 944c0 8.672-7.328 16-16 16h-736c-8.672 0-16-7.328-16-16v-864c0-8.672 7.328-16 16-16 0 0 495.956-0.002 496 0v224c0 17.672 14.326 32 32 32h224v624z",
+          "M736 832h-448c-17.672 0-32-14.326-32-32s14.328-32 32-32h448c17.674 0 32 14.326 32 32s-14.326 32-32 32z",
+          "M736 704h-448c-17.672 0-32-14.326-32-32s14.328-32 32-32h448c17.674 0 32 14.326 32 32s-14.326 32-32 32z",
+          "M736 576h-448c-17.672 0-32-14.326-32-32s14.328-32 32-32h448c17.674 0 32 14.326 32 32s-14.326 32-32 32z"
+        ],
+        "tags": [
+          "file-text",
+          "file",
+          "document",
+          "list",
+          "paper",
+          "page"
+        ],
+        "defaultCode": 59686,
+        "grid": 16,
+        "attrs": []
+      },
+      "attrs": [],
+      "properties": {
+        "ligatures": "file-text2, file4",
+        "name": "file-text2",
+        "order": 4,
+        "id": 39,
+        "prevSize": 32,
+        "code": 59686
+      },
+      "setIdx": 0,
+      "setId": 1,
+      "iconIdx": 38
+    },
+    {
+      "icon": {
+        "paths": [
+          "M448 128l128 128h448v704h-1024v-832z"
+        ],
+        "tags": [
+          "folder",
+          "directory",
+          "category",
+          "browse"
+        ],
+        "defaultCode": 59695,
+        "grid": 16,
+        "attrs": []
+      },
+      "attrs": [],
+      "properties": {
+        "ligatures": "folder, directory",
+        "name": "folder",
+        "order": 2,
+        "id": 48,
+        "prevSize": 32,
+        "code": 59695
+      },
+      "setIdx": 0,
+      "setId": 1,
+      "iconIdx": 47
+    },
+    {
+      "icon": {
+        "paths": [
+          "M832 960l192-512h-832l-192 512zM128 384l-128 576v-832h288l128 128h416v128z"
+        ],
+        "tags": [
+          "folder-open",
+          "directory",
+          "category",
+          "browse"
+        ],
+        "defaultCode": 59696,
+        "grid": 16,
+        "attrs": []
+      },
+      "attrs": [],
+      "properties": {
+        "ligatures": "folder-open, directory2",
+        "name": "folder-open",
+        "order": 3,
+        "id": 49,
+        "prevSize": 32,
+        "code": 59696
+      },
+      "setIdx": 0,
+      "setId": 1,
+      "iconIdx": 48
+    },
+    {
+      "icon": {
+        "paths": [
+          "M192 128l640 384-640 384z"
+        ],
+        "tags": [
+          "play",
+          "player"
+        ],
+        "defaultCode": 59932,
+        "grid": 16,
+        "attrs": []
+      },
+      "attrs": [],
+      "properties": {
+        "ligatures": "play3, player8",
+        "name": "play3",
+        "order": 7,
+        "id": 285,
+        "prevSize": 32,
+        "code": 59932
+      },
+      "setIdx": 0,
+      "setId": 1,
+      "iconIdx": 284
+    }
+  ],
+  "height": 1024,
+  "metadata": {
+    "name": "icomoon"
+  },
+  "preferences": {
+    "showGlyphs": true,
+    "showQuickUse": true,
+    "showQuickUse2": true,
+    "showSVGs": true,
+    "fontPref": {
+      "prefix": "icon-",
+      "metadata": {
+        "fontFamily": "icomoon"
+      },
+      "metrics": {
+        "emSize": 1024,
+        "baseline": 6.25,
+        "whitespace": 50
+      },
+      "embed": false
+    },
+    "imagePref": {
+      "prefix": "icon-",
+      "png": true,
+      "useClassSelector": true,
+      "color": 0,
+      "bgColor": 16777215,
+      "classSelector": ".icon"
+    },
+    "historySize": 50,
+    "showCodes": true,
+    "gridSize": 16
+  }
+}
