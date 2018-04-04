@@ -1,5 +1,6 @@
 <template>
   <div class="vddl-handle"
+    :is="tag"
     @dragstart="handle"
     @dragend="handle">
     <slot></slot>
@@ -12,6 +13,10 @@ export default {
   props: {
     handleLeft: Number,
     handleTop: Number,
+    tag: {
+      type: String,
+      default: 'div'
+    },
   },
   data() {
     return {};

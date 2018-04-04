@@ -17,6 +17,7 @@ Use the `vddl-draggable` component to make your element draggable.
 #### Attributes
 
 * `draggable` Required attribute. The value has to be an object that represents the data of the element. In case of a drag and drop operation the object will be serialized and unserialized on the receiving end.
+* `tag` Not required attribute. Use this attribute to change the default rendered tag. By default, the `vddl-draggable` component is rendered as a `<div>`. To change the HTML tag, we could do `:tag="'button'"`.
 * `index` Required attribute. Use this attribute to tell the directive what '$index' is it.
 * `wrapper` Required attribute. Same of the recent 'vddl-list' list prop.
 * `effect-allowed` Use this attribute to limit the operations that can be performed. Options are:

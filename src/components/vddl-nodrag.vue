@@ -1,5 +1,6 @@
 <template>
   <div class="vddl-nodrag"
+    :is="tag"
     @dragstart="handleDragstart"
     @dragend="handleDragend">
     <slot></slot>
@@ -9,7 +10,12 @@
 <script>
 export default {
   name: 'vddl-nodrag',
-  props: {},
+  props: {
+    tag: {
+      type: String,
+      default: 'div'
+    },
+  },
   data() {
     return {};
   },
