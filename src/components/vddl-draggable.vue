@@ -49,9 +49,6 @@ export default {
       // Serialize the data associated with this element. IE only supports the Text drag type
       event.dataTransfer.setData("Text", draggable);
 
-      // Only allow actions specified in effect-allowed attribute
-      event.dataTransfer.effectAllowed = this.effectAllowed || "move";
-
       // Add CSS classes. IE9 not support 'classList'
       this.$el.className = this.$el.className.trim() + " vddl-dragging";
       setTimeout(() => {
@@ -59,7 +56,7 @@ export default {
       }, 0);
 
       // Workarounds for stupid browsers, see description below
-      this.vddlDropEffectWorkaround.dropEffect = "none";
+      this.vddlDropEffectWorkaround.dropEffect = this.effectAllowed || "move";
       this.vddlDragTypeWorkaround.isDragging = true;
 
       // Save type of item in global state. Usually, this would go into the dataTransfer

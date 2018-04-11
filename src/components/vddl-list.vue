@@ -124,17 +124,12 @@ export default {
       }
       this.invokeCallback('inserted', event, index, transferredObject);
 
-      // In Chrome on Windows the dropEffect will always be none...
-      // We have to determine the actual effect manually from the allowed effects
-      if (event.dataTransfer.dropEffect === "none") {
-        if (event.dataTransfer.effectAllowed === "copy" ||
-            event.dataTransfer.effectAllowed === "move") {
-          this.vddlDropEffectWorkaround.dropEffect = event.dataTransfer.effectAllowed;
-        } else {
-          this.vddlDropEffectWorkaround.dropEffect = event.ctrlKey ? "copy" : "move";
-        }
-      } else {
-        this.vddlDropEffectWorkaround.dropEffect = event.dataTransfer.dropEffect;
+      // As effectAllowed & dropEffect event properties wired behavior
+      // We have to determine the actual effect manually from the `vddlDropEffectWorkaround.dropEffect`
+      // Which is set in `handleDragstart` method
+      var dropEffect = this.vddlDropEffectWorkaround.dropEffect;
+      if (dropEffect !== "copy" && dropEffect !== "move") {
+        this.vddlDropEffectWorkaround.dropEffect = event.ctrlKey ? "copy" : "move";
       }
 
       // Clean up
@@ -259,4 +254,3 @@ export default {
   },
 };
 </script>
-
