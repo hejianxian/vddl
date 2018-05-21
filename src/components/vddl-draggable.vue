@@ -73,7 +73,7 @@ export default {
 
       // Invoke callback
       if (typeof(this.dragstart) === 'function') {
-        this.dragstart.call(this, event.target);
+        this.dragstart.call(this, event.target, event);
       }
     },
 
